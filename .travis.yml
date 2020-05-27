@@ -1,0 +1,25 @@
+language: node_js
+cache:
+  directories:
+    - ~/.npm
+node_js:
+  - 'v12.16.3'
+  - 'v14.3.0'
+notifications:
+  email: false
+stages:
+  - lint
+  - name: deploy
+    if: branch = master
+jobs:
+  include:
+    - stage: lint
+      name: eslint
+      script: npm run lint
+    - stage: lint
+      name: commitlint
+      before_script:
+        - npm i -g @commitlint/travis-cli
+      script: commitlint-travis
+    - stage: deploy
+      script: npx semantic-release

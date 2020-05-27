@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "drknoxy.eslint-disable-snippets",
+    "editorconfig.editorconfig",
+    "wix.vscode-import-cost"
+  ]
+}

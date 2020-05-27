@@ -1,0 +1,7 @@
+{
+  "debug.node.autoAttach": "on",
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+  "javascript.implicitProjectConfig.checkJs": true,
+  "javascript.validate.enable": true
+}
