@@ -12,50 +12,67 @@ export interface BaseProvider {
 
   /**
    * Método que permite añadir un participante a la reunión.
+   * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Participant} participant - Instancia de participante a añadir.
    */
-  createParticipant: (participant: Participant) => Promise<RequestStatus>
+  createParticipant: (
+    token: string,
+    participant: Participant
+  ) => Promise<RequestStatus>
   /**
    * Método que permite editar un participante de la reunión.
+   * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Participant} participant - Instancia de participante a editar.
    */
-  editParticipant: (participant: Participant) => Promise<RequestStatus>
+  editParticipant: (
+    token: string,
+    participant: Participant
+  ) => Promise<RequestStatus>
   /**
    * Método que permite eliminar un participante de la reunión.
+   * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Participant} participant - Instancia de participante a eliminar.
    */
-  deleteParticipant: (participant: Participant) => Promise<RequestStatus>
+  deleteParticipant: (
+    token: string,
+    participant: Participant
+  ) => Promise<RequestStatus>
 
   /**
    * Método que permite crear una reunión.
+   * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Meeting} meeting - Instancia de meeting a crear.
    */
-  createMeeting: (meeting: Meeting) => Promise<RequestStatus>
+  createMeeting: (token: string, meeting: Meeting) => Promise<RequestStatus>
   /**
    * Método que permite editar una reunión.
+   * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Meeting} meeting - Instancia de meeting a editar.
    */
-  editMeeting: (meeting: Meeting) => Promise<RequestStatus>
+  editMeeting: (token: string, meeting: Meeting) => Promise<RequestStatus>
   /**
    * Método que permite eliminar una reunión.
+   * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Meeting} meeting - Instancia de meeting a eliminar.
    */
-  deleteMeeting: (meeting: Meeting) => Promise<RequestStatus>
+  deleteMeeting: (token: string, meeting: Meeting) => Promise<RequestStatus>
 
   /**
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
    *
    * Formatea la pregunta leída desde la base de datos.
+   * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {boolean} param - Primer parametro.
    */
-  goMeeting: (param: boolean) => Promise<RequestStatus>
+  goMeeting: (token: string, param: boolean) => Promise<RequestStatus>
   /**
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
    *
    * Formatea la pregunta leída desde la base de datos.
+   * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {boolean} param - Primer parametro.
    */
-  goMeetingTeacher: (param: boolean) => Promise<RequestStatus>
+  goMeetingTeacher: (token: string, param: boolean) => Promise<RequestStatus>
 }
 
 /**
