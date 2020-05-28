@@ -6,9 +6,10 @@ export interface BaseProvider {
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
    *
    * Formatea la pregunta leída desde la base de datos.
-   * @param {boolean} param - Primer parametro.
+   * @param {string} username - Primer parametro.
+   * @param {string} password - Seg parametro.
    */
-  login(param: boolean): void
+  login: (url: string, username: string, password: string) => Promise<string>
 
   /**
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
