@@ -3,7 +3,7 @@ import { BaseProvider } from '../types'
 /**
  * Métodos del Proveedor Adobe Connect.
  */
-import login from './login'
+import { login } from './login'
 
 import createParticipant from './createParticipant'
 import editParticipant from './editParticipant'

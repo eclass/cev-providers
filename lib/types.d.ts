@@ -8,39 +8,39 @@ export interface BaseProvider {
    *
    * @param {LoginProps} props - Parámetros para el Login del Proveedor CEV.
    */
-  login: (props: LoginProps) => RequestStatus
+  login: (props: LoginProps) => Promise<RequestStatus>
 
   /**
    * Método que permite añadir un participante a la reunión.
    * @param {Participant} participant - Instancia de participante a añadir.
    */
-  createParticipant: (participant: Participant) => void
+  createParticipant: (participant: Participant) => Promise<RequestStatus>
   /**
    * Método que permite editar un participante de la reunión.
    * @param {Participant} participant - Instancia de participante a editar.
    */
-  editParticipant: (participant: Participant) => void
+  editParticipant: (participant: Participant) => Promise<RequestStatus>
   /**
    * Método que permite eliminar un participante de la reunión.
    * @param {Participant} participant - Instancia de participante a eliminar.
    */
-  deleteParticipant: (participant: Participant) => void
+  deleteParticipant: (participant: Participant) => Promise<RequestStatus>
 
   /**
    * Método que permite crear una reunión.
    * @param {Meeting} meeting - Instancia de meeting a crear.
    */
-  createMeeting: (meeting: Meeting) => void
+  createMeeting: (meeting: Meeting) => Promise<RequestStatus>
   /**
    * Método que permite editar una reunión.
    * @param {Meeting} meeting - Instancia de meeting a editar.
    */
-  editMeeting: (meeting: Meeting) => void
+  editMeeting: (meeting: Meeting) => Promise<RequestStatus>
   /**
    * Método que permite eliminar una reunión.
    * @param {Meeting} meeting - Instancia de meeting a eliminar.
    */
-  deleteMeeting: (meeting: Meeting) => void
+  deleteMeeting: (meeting: Meeting) => Promise<RequestStatus>
 
   /**
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
@@ -48,14 +48,14 @@ export interface BaseProvider {
    * Formatea la pregunta leída desde la base de datos.
    * @param {boolean} param - Primer parametro.
    */
-  goMeeting(param: boolean): void
+  goMeeting: (param: boolean) => Promise<RequestStatus>
   /**
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
    *
    * Formatea la pregunta leída desde la base de datos.
    * @param {boolean} param - Primer parametro.
    */
-  goMeetingTeacher(param: boolean): void
+  goMeetingTeacher: (param: boolean) => Promise<RequestStatus>
 }
 
 /**
