@@ -3,13 +3,44 @@
  */
 export interface BaseProvider {
   /**
-   * @todo Complementar parametros y respuestas según funcionamiento actual V6.
+   * Método que autentifica contra el proveedor el usuario con privilegios
+   * para crear una reunión.
    *
-   * Formatea la pregunta leída desde la base de datos.
-   * @param {string} username - Primer parametro.
-   * @param {string} password - Seg parametro.
+   * @param {LoginProps} props - Parámetros para el Login del Proveedor CEV.
    */
-  login: (url: string, username: string, password: string) => Promise<string>
+  login: (props: LoginProps) => Promise<RequestStatus>
+
+  /**
+   * Método que permite añadir un participante a la reunión.
+   * @param {Participant} participant - Instancia de participante a añadir.
+   */
+  createParticipant: (participant: Participant) => Promise<RequestStatus>
+  /**
+   * Método que permite editar un participante de la reunión.
+   * @param {Participant} participant - Instancia de participante a editar.
+   */
+  editParticipant: (participant: Participant) => Promise<RequestStatus>
+  /**
+   * Método que permite eliminar un participante de la reunión.
+   * @param {Participant} participant - Instancia de participante a eliminar.
+   */
+  deleteParticipant: (participant: Participant) => Promise<RequestStatus>
+
+  /**
+   * Método que permite crear una reunión.
+   * @param {Meeting} meeting - Instancia de meeting a crear.
+   */
+  createMeeting: (meeting: Meeting) => Promise<RequestStatus>
+  /**
+   * Método que permite editar una reunión.
+   * @param {Meeting} meeting - Instancia de meeting a editar.
+   */
+  editMeeting: (meeting: Meeting) => Promise<RequestStatus>
+  /**
+   * Método que permite eliminar una reunión.
+   * @param {Meeting} meeting - Instancia de meeting a eliminar.
+   */
+  deleteMeeting: (meeting: Meeting) => Promise<RequestStatus>
 
   /**
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
@@ -17,56 +48,96 @@ export interface BaseProvider {
    * Formatea la pregunta leída desde la base de datos.
    * @param {boolean} param - Primer parametro.
    */
-  createParticipant(param: boolean): void
+  goMeeting: (param: boolean) => Promise<RequestStatus>
   /**
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
    *
    * Formatea la pregunta leída desde la base de datos.
    * @param {boolean} param - Primer parametro.
    */
-  editParticipant(param: boolean): void
+  goMeetingTeacher: (param: boolean) => Promise<RequestStatus>
+}
+
+/**
+ * Parámetros de la función login del Proveedor CEV.
+ */
+export type LoginProps = {
   /**
-   * @todo Complementar parametros y respuestas según funcionamiento actual V6.
-   *
-   * Formatea la pregunta leída desde la base de datos.
-   * @param {boolean} param - Primer parametro.
+   * URL API.
    */
-  deleteParticipant(param: boolean): void
+  url: string
+  /**
+   * Usuario a loguear en el Proveedor CEV.
+   */
+  username?: string
+  /**
+   * Clave del usuario a loguear en el Proveedor CEV.
+   */
+  password?: string
+  /**
+   * Token del Proveedor CEV.
+   */
+  token?: string
+}
+
+export type Meeting = {
+  /**
+   * URL de la reunión.
+   */
+  url: string
+}
+
+/**
+ * Instancia de Participante a la reunión del Proveedor CEV.
+ */
+export type Participant = {
+  /**
+   * Nombre de usuario al proveedor CEV.
+   */
+  username: string
+  /**
+   * Contraseña del usuario al proveedor CEV.
+   */
+  password: string
+  /**
+   * Nombre del participante.
+   */
+  firstName?: string
+  /**
+   * Apellido del participante.
+   */
+  lastName?: string
+}
+
+/**
+ * Objeto de respuesta para todas las peticiones.
+ */
+export interface RequestStatus {
+  /**
+   * ### Estado de la petición
+   * - __TRUE__: Si es exitosa y no se capturó ningún error
+   * - __FALSE__: Si se capturó algún error
+   */
+  success: boolean
 
   /**
-   * @todo Complementar parametros y respuestas según funcionamiento actual V6.
-   *
-   * Formatea la pregunta leída desde la base de datos.
-   * @param {boolean} param - Primer parametro.
+   * Nombre del estado.
    */
-  createMeeting(param: boolean): void
-  /**
-   * @todo Complementar parametros y respuestas según funcionamiento actual V6.
-   *
-   * Formatea la pregunta leída desde la base de datos.
-   * @param {boolean} param - Primer parametro.
-   */
-  editMeeting(param: boolean): void
-  /**
-   * @todo Complementar parametros y respuestas según funcionamiento actual V6.
-   *
-   * Formatea la pregunta leída desde la base de datos.
-   * @param {boolean} param - Primer parametro.
-   */
-  deleteMeeting(param: boolean): void
+  name: string
 
   /**
-   * @todo Complementar parametros y respuestas según funcionamiento actual V6.
-   *
-   * Formatea la pregunta leída desde la base de datos.
-   * @param {boolean} param - Primer parametro.
+   * Detalle de la Petición. En caso de error se muestra el mensaje de error de la la excepción.
    */
-  goMeeting(param: boolean): void
+  detail: string
+
   /**
-   * @todo Complementar parametros y respuestas según funcionamiento actual V6.
-   *
-   * Formatea la pregunta leída desde la base de datos.
-   * @param {boolean} param - Primer parametro.
+   * Código de la petición.
    */
-  goMeetingTeacher(param: boolean): void
+  code: number
+
+  /**
+   * Error que dispara el resolver.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  err?: any
 }

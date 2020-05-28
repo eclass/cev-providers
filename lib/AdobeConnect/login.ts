@@ -1,3 +1,5 @@
+import { LoginProps, RequestStatus } from '../types'
+
 import { URL } from 'url'
 import fetch = require('node-fetch')
 
@@ -7,11 +9,11 @@ import fetch = require('node-fetch')
  * @example
  *  const login = login(username, password)
  */
-export const login = async (
-  url: string,
-  username: string,
-  password: string
-): Promise<string> => {
+export const login = async ({
+  url,
+  username,
+  password
+}: LoginProps): Promise<RequestStatus> => {
   try {
     const loginUrl = new URL(url)
     const params = {
@@ -20,23 +22,42 @@ export const login = async (
       login: username,
       password
     }
-    // eslint-disable-next-line security/detect-object-injection
     Object.keys(params).forEach(key =>
-      loginUrl.searchParams.append(key, params[key])
+      loginUrl.searchParams.append(key, params[`${key}`])
     )
     const response = await fetch(loginUrl)
     if (response.ok) {
       const cookies = response.headers.get('set-cookie')
       if (cookies !== '' && cookies.includes('BREEZESESSION')) {
-        return cookies.split(';')[0].split('=')[1]
+        const [[, breezeSession]] = cookies
+          .split(';')
+          .map(cookie => cookie.split('='))
+        /**
+         * @todo Transformar a RequestsStatus.
+         */
+        return breezeSession
       } else {
+        /**
+         * @todo Transformar a RequestsStatus.
+         */
         throw new Error('cookie not found')
       }
     } else {
+      /**
+       * @todo Transformar a RequestsStatus.
+       */
       throw new Error(`unexpected response ${response.statusText}`)
     }
-  } catch (error) {
-    return error.name
+  } catch (err) {
+    /**
+     * @todo Documentar este caso.
+     */
+    return {
+      success: false,
+      code: 500,
+      detail: 'Detalle',
+      name: 'Peticion falliah',
+      err
+    }
   }
-  return ''
 }
