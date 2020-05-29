@@ -34,7 +34,10 @@
     "url": "https://github.com/eclass/cev-providers/issues"
   },
   "homepage": "https://github.com/eclass/cev-providers#readme",
-  "dependencies": {},
+  "dependencies": {
+    "node-fetch": "2.6.0",
+    "fast-xml-parser": "3.17.3"
+  },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
@@ -55,12 +58,10 @@
     "eslint-plugin-standard": "4.0.1",
     "husky": "4.2.5",
     "lint-staged": "10.2.7",
-    "node-fetch": "2.6.0",
     "prettier-standard": "16.3.0",
     "semantic-release": "17.0.7",
     "ts-node": "8.10.1",
-    "typescript": "3.9.3",
-    "fast-xml-parser": "3.17.3"
+    "typescript": "3.9.3"
   },
   "eslintConfig": {
     "extends": [
