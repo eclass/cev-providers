@@ -155,6 +155,10 @@ export interface RequestStatus {
   /**
    * Error que dispara el resolver.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  err?: any
+  err?: unknown
+
+  /**
+   * Data asociada a request.
+   */
+  data?: unknown
 }

@@ -32,31 +32,28 @@ export const login = async ({
         const [[, breezeSession]] = cookies
           .split(';')
           .map(cookie => cookie.split('='))
-        /**
-         * @todo Transformar a RequestsStatus.
-         */
-        return breezeSession
+        return {
+          success: true,
+          code: 200,
+          detail: 'Token generated',
+          name: 'Successful Request',
+          data: breezeSession
+        }
       } else {
-        /**
-         * @todo Transformar a RequestsStatus.
-         */
-        throw new Error('cookie not found')
+        return {
+          success: false,
+          code: 500,
+          detail: 'Cookie BREEZESESSION not found in header',
+          name: 'Cookie not found'
+        }
       }
-    } else {
-      /**
-       * @todo Transformar a RequestsStatus.
-       */
-      throw new Error(`unexpected response ${response.statusText}`)
     }
   } catch (err) {
-    /**
-     * @todo Documentar este caso.
-     */
     return {
       success: false,
       code: 500,
-      detail: 'Detalle',
-      name: 'Peticion falliah',
+      detail: 'Fetch error returned',
+      name: 'Network Error',
       err
     }
   }
