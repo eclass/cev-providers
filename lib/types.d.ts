@@ -104,11 +104,11 @@ export type Meeting = {
   /**
    * Fecha inicio reunión
    */
-  dateInit: Date
+  dateInit: string | Date
   /**
    * Fecha fin reunión
    */
-  dateEnd?: Date
+  dateEnd?: string | Date
 }
 
 /**
