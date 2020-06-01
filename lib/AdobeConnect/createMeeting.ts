@@ -1,9 +1,7 @@
 import { Meeting, RequestStatus } from '../types'
+import { fetchEndpoint } from './lib/fetchEndpoint'
 
-import { URL } from 'url'
-import parser = require('fast-xml-parser')
-import fetch = require('node-fetch')
-import he = require('fast-xml-parser')
+// import he = require('fast-xml-parser')
 
 /**
  * Login a Adobeconnect
@@ -15,36 +13,37 @@ export const createMeeting = async (
   token: string,
   { url, name, dateInit, dateEnd }: Meeting
 ): Promise<RequestStatus> => {
-  try {
-    // Validar si meeting ya existe
-    // Obtener sco_id
-    const endPointUrl = new URL(url)
-    const params = {
-      action: 'sco-shortcuts',
-      session: token
-    }
-    Object.keys(params).forEach(key =>
-      endPointUrl.searchParams.append(key, params[`${key}`])
-    )
-    const response = await fetch(endPointUrl)
-    if (response.ok) {
-      const responseText = await response.text()
-      const options = {
-        attributeNamePrefix: '@_',
-        ignoreAttributes: false,
-        ignoreNameSpace: false
-      }
+  let scoId = null
 
-      const xmlData = parser.parse(responseText, options)
-      if (xmlData.results.status['@_code'] === 'ok') {
-        let final = ''
-        xmlData.results.shortcuts.sco.forEach(short => {
-          if (short['@_type'] === 'user-meetings') {
-            final = short['@_sco-id']
-          }
-        })
-      }
+  try {
+    /**
+     * Obtener `sco_id`.
+     */
+    const getShortcutId = await fetchEndpoint(url, {
+      session: token,
+      action: 'sco-shortcuts'
+    })
+
+    if (getShortcutId.results.status['@_code'] === 'ok') {
+      scoId = getShortcutId.results.shortcuts.sco.find(
+        short => short['@_type'] === 'user-meetings'
+      )['@_sco-id']
     }
+
+    /**
+     * Validar si meeting ya existe.
+     */
+    const checkMeeting = await fetchEndpoint(
+      url,
+      {
+        session: token,
+        action: 'sco-contents',
+        'sco-id': scoId,
+        'filter-type': 'meeting',
+        'filter-name': name
+      },
+      true
+    )
   } catch (err) {
     return {
       success: false,
