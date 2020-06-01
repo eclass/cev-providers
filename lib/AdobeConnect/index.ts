@@ -9,7 +9,7 @@ import createParticipant from './createParticipant'
 import editParticipant from './editParticipant'
 import deleteParticipant from './deleteParticipant'
 
-import createMeeting from './createMeeting'
+import { createMeeting } from './createMeeting'
 import editMeeting from './editMeeting'
 import deleteMeeting from './deleteMeeting'
 

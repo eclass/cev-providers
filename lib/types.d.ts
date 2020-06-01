@@ -15,28 +15,19 @@ export interface BaseProvider {
    * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Participant} participant - Instancia de participante a añadir.
    */
-  createParticipant: (
-    token: string,
-    participant: Participant
-  ) => Promise<RequestStatus>
+  createParticipant: (token: string, participant: Participant) => void
   /**
    * Método que permite editar un participante de la reunión.
    * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Participant} participant - Instancia de participante a editar.
    */
-  editParticipant: (
-    token: string,
-    participant: Participant
-  ) => Promise<RequestStatus>
+  editParticipant: (token: string, participant: Participant) => void
   /**
    * Método que permite eliminar un participante de la reunión.
    * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Participant} participant - Instancia de participante a eliminar.
    */
-  deleteParticipant: (
-    token: string,
-    participant: Participant
-  ) => Promise<RequestStatus>
+  deleteParticipant: (token: string, participant: Participant) => void
 
   /**
    * Método que permite crear una reunión.
@@ -49,13 +40,13 @@ export interface BaseProvider {
    * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Meeting} meeting - Instancia de meeting a editar.
    */
-  editMeeting: (token: string, meeting: Meeting) => Promise<RequestStatus>
+  editMeeting: (token: string, meeting: Meeting) => void
   /**
    * Método que permite eliminar una reunión.
    * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Meeting} meeting - Instancia de meeting a eliminar.
    */
-  deleteMeeting: (token: string, meeting: Meeting) => Promise<RequestStatus>
+  deleteMeeting: (token: string, meeting: Meeting) => void
 
   /**
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
@@ -64,7 +55,7 @@ export interface BaseProvider {
    * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {boolean} param - Primer parametro.
    */
-  goMeeting: (token: string, param: boolean) => Promise<RequestStatus>
+  goMeeting: (token: string, param: boolean) => void
   /**
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
    *
@@ -72,7 +63,7 @@ export interface BaseProvider {
    * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {boolean} param - Primer parametro.
    */
-  goMeetingTeacher: (token: string, param: boolean) => Promise<RequestStatus>
+  goMeetingTeacher: (token: string, param: boolean) => void
 }
 
 /**
@@ -99,9 +90,25 @@ export type LoginProps = {
 
 export type Meeting = {
   /**
-   * URL de la reunión.
+   * URL API.
    */
   url: string
+  /**
+   * Token del Proveedor CEV.
+   */
+  token: string
+  /**
+   * Nombre reunión
+   */
+  name: string
+  /**
+   * Fecha inicio reunión
+   */
+  dateInit: Date
+  /**
+   * Fecha fin reunión
+   */
+  dateEnd?: Date
 }
 
 /**
