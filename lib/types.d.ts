@@ -102,13 +102,13 @@ export type Meeting = {
    */
   name: string
   /**
-   * Fecha inicio reunión
+   * Fecha inicio meeting
    */
-  dateInit: string | Date
+  dateInit: string
   /**
-   * Fecha fin reunión
+   * Fecha fin meeting
    */
-  dateEnd?: string | Date
+  dateEnd?: string
 }
 
 /**
