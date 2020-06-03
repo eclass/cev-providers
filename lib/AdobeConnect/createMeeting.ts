@@ -1,21 +1,19 @@
 import { Meeting, RequestStatus } from '../types'
 import { fetchEndpoint } from './lib/fetchEndpoint'
-import { URL } from 'url'
 
 // import he = require('fast-xml-parser')
 
 /**
- * Login a Adobeconnect
+ * Crear meeting en Adobeconnect
  *
  * @example
- *  const login = login(username, password)
+ *  const createMeeting = createMeeting({url, name, dateInit, dateEnd})
  */
 export const createMeeting = async (
   { url, name, dateInit, dateEnd }: Meeting,
   token: string
 ): Promise<RequestStatus> => {
   let scoId = null
-  const domain = new URL(url).origin
 
   try {
     /**
@@ -48,7 +46,7 @@ export const createMeeting = async (
     ) {
       const returnMeeting = {
         'sco-id': checkMeeting.results.scos.sco['@_sco-id'],
-        url: domain + checkMeeting.results.scos.sco['url-path']
+        url: url + checkMeeting.results.scos.sco['url-path']
       }
       return {
         success: true,
@@ -81,7 +79,7 @@ export const createMeeting = async (
     ) {
       const returnMeeting = {
         'sco-id': createMeeting.results.sco['@_sco-id'],
-        url: domain + createMeeting.results.sco['url-path']
+        url: url + createMeeting.results.sco['url-path']
       }
       return {
         success: true,

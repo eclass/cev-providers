@@ -18,9 +18,6 @@ import { createMeeting } from './createMeeting'
 // import goMeetingTeacher from './goMeetingTeacher'
 
 export class AdobeConnect extends BaseProvider {
-  private _url: string
-  private _token: string
-
   private _username: string
   private _password: string
 
@@ -28,7 +25,7 @@ export class AdobeConnect extends BaseProvider {
 
   constructor (url: string, username: string, password: string) {
     super()
-    this._url = url
+    this.url = url
     this._username = username
     this._password = password
   }
@@ -37,9 +34,9 @@ export class AdobeConnect extends BaseProvider {
     username,
     password
   }: LoginProps): Promise<RequestStatus> {
-    const loginResponse = await login({ username, password, url: this._url })
+    const loginResponse = await login({ username, password, url: this.url })
     if (loginResponse.success) {
-      this._token = `${loginResponse.data}`
+      this.token = `${loginResponse.data}`
       this._logged = true
     }
     return loginResponse
@@ -49,15 +46,16 @@ export class AdobeConnect extends BaseProvider {
     /**
      * Si no está logueado, loguea a la aplicación de Adobe Connect.
      */
-    if (!this._logged)
+    if (!this._logged) {
       await this.login({ username: this._username, password: this._password })
+    }
 
     return await createMeeting(
       {
         ...meeting,
-        url: this._url
+        url: this.url
       },
-      this._token
+      this.token
     )
   }
 
