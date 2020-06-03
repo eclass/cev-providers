@@ -92,11 +92,11 @@ export type Meeting = {
   /**
    * URL API.
    */
-  url: string
+  url?: string
   /**
    * Token del Proveedor CEV.
    */
-  token: string
+  token?: string
   /**
    * Nombre reunión
    */

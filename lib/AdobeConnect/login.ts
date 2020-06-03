@@ -15,7 +15,7 @@ export const login = async ({
   password
 }: LoginProps): Promise<RequestStatus> => {
   try {
-    const loginUrl = new URL(url)
+    const loginUrl = new URL(`${url}/api/xml`)
     const params = {
       action: 'login',
       'external-auth': 'use',

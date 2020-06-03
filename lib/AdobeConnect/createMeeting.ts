@@ -21,7 +21,7 @@ export const createMeeting = async (
     /**
      * Obtener `sco_id`.
      */
-    const getShortcutId = await fetchEndpoint(url, {
+    const getShortcutId = await fetchEndpoint(`${url}/api/xml`, {
       session: token,
       action: 'sco-shortcuts'
     })
@@ -35,7 +35,7 @@ export const createMeeting = async (
     /**
      * Validar si meeting ya existe.
      */
-    const checkMeeting = await fetchEndpoint(url, {
+    const checkMeeting = await fetchEndpoint(`${url}/api/xml`, {
       session: token,
       action: 'sco-contents',
       'sco-id': scoId,
