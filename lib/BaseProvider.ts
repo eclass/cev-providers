@@ -5,6 +5,14 @@ import { LoginProps, RequestStatus, Participant, Meeting } from './types'
  */
 export abstract class BaseProvider {
   /**
+   * Dominio proveedor
+   */
+  url: string
+  /**
+   * Token del proveedor
+   */
+  token: string
+  /**
    * Método que autentifica contra el proveedor el usuario con privilegios
    * para crear una reunión.
    *
