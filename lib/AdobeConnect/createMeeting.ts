@@ -11,8 +11,8 @@ import { URL } from 'url'
  *  const login = login(username, password)
  */
 export const createMeeting = async (
-  token: string,
-  { url, name, dateInit, dateEnd }: Meeting
+  { url, name, dateInit, dateEnd }: Meeting,
+  token: string
 ): Promise<RequestStatus> => {
   let scoId = null
   const domain = new URL(url).origin
