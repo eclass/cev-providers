@@ -45,6 +45,10 @@ export type Meeting = {
    * Fecha fin meeting
    */
   dateEnd?: string
+  /**
+   * Identificador del scheduleId.
+   */
+  scoId?: number
 }
 
 /**

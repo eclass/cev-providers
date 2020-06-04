@@ -6,12 +6,25 @@ export const participantToMeeting = async (
   permissionId: string,
   token: string,
   url: string
-): Promise<void> => {
-  await fetchEndpoint(`${url}/api/xml`, {
-    session: token,
-    action: 'permissions-update',
-    'acl-id': scoId,
-    'principal-id': principalId,
-    'permission-id': permissionId
-  })
+): Promise<boolean> => {
+  const added = await fetchEndpoint(
+    `${url}/api/xml`,
+    {
+      session: token,
+      action: 'permissions-update',
+      'acl-id': scoId,
+      'principal-id': principalId,
+      'permission-id': permissionId
+    },
+    true
+  )
+
+  if (!added || !added.results) {
+    /**
+     * @todo Documentar error.
+     */
+    throw new Error('Network error')
+  }
+
+  return added.results.status['@_code'] === 'ok'
 }
