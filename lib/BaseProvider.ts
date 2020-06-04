@@ -62,13 +62,11 @@ export abstract class BaseProvider {
   // abstract deleteMeeting(token: string, meeting: Meeting): void
 
   /**
-   * @todo Complementar parametros y respuestas según funcionamiento actual V6.
-   *
-   * Formatea la pregunta leída desde la base de datos.
-   * @param {string} token - Token para acceder a la API Proveedor CEV.
-   * @param {boolean} param - Primer parametro.
+   * Devuelve la url con la sesión para conectar directamente a AdobeConnect.
+   * @param {string} url - Url del recurso a generar.
+   * @param {LoginProps} props - Parametros para el login.
    */
-  // abstract goMeeting(token: string, param: boolean): void
+  abstract goMeeting (url: string, props: LoginProps): Promise<RequestStatus>
   /**
    * @todo Complementar parametros y respuestas según funcionamiento actual V6.
    *
