@@ -1,0 +1,49 @@
+{
+  "Instancing CEV": {
+    "prefix": "newCEV",
+    "body": [
+      "const CEV = new AdobeConnect('${1:url}', '${2:username}', '${3:password}')"
+    ],
+    "description": "Instancing CEV"
+  },
+  "Create Meeting": {
+    "prefix": ["createMeeting", "meeting"],
+    "body": [
+      "const Meeting = await CEV.createMeeting({",
+      "    name: '${1:nameCEV}',",
+      "    dateInit: '${2:dateInitCEV}',",
+      "    dateEnd: '${3:dateEnd}'",
+      "})"
+    ],
+    "description": "Create Meeting"
+  },
+  "Create Participant": {
+    "prefix": "createParticipant",
+    "body": [
+      "const Participant = await CEV.createParticipant({",
+      "  firstName: '${1:firstName}',",
+      "  lastName: '${2:lastName}',",
+      "  username: '${3:usernameOrEmail}',",
+      "  password: '${4:password}'",
+      "})"
+    ],
+    "description": "Create Participant"
+  },
+  "Add Participant to Meeting": {
+    "prefix": "participantToMeeting",
+    "body": [
+      "await CEV.participantToMeeting('${1|view,host,mini-host,remove|}', ${2:Participant.principalId}, ${3:Meeting.scoId})"
+    ],
+    "description": "Add Participant to Meeting"
+  },
+  "Generate Meeting URL": {
+    "prefix": "goMeeting",
+    "body": [
+      "const ${1:localUrl} = await CEV.goMeeting(${2:Meeting.url}, {",
+      "    username: '${3:username}',",
+      "    password: '${4:password}'",
+      "  })"
+    ],
+    "description": "Generate Meeting URL"
+  }
+}
