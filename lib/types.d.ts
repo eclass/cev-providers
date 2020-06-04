@@ -58,11 +58,11 @@ export type Participant = {
   /**
    * Nombre de usuario al proveedor CEV.
    */
-  username: string
+  username?: string
   /**
    * Contraseña del usuario al proveedor CEV.
    */
-  password: string
+  password?: string
   /**
    * Nombre del participante.
    */
@@ -71,41 +71,25 @@ export type Participant = {
    * Apellido del participante.
    */
   lastName?: string
-}
-
-/**
- * Objeto de respuesta para todas las peticiones.
- */
-export interface RequestStatus {
-  /**
-   * ### Estado de la petición
-   * - __TRUE__: Si es exitosa y no se capturó ningún error
-   * - __FALSE__: Si se capturó algún error
-   */
-  success: boolean
 
   /**
-   * Nombre del estado.
+   * Login del usuario al proveedor CEV.
    */
-  name: string
-
+  login?: string
   /**
-   * Detalle de la Petición. En caso de error se muestra el mensaje de error de la la excepción.
+   * Identificador del participante en el proveedor CEV.
    */
-  detail: string
-
+  principalId?: number
   /**
-   * Código de la petición.
+   * Identificador de la cuenta del proveedor CEV.
    */
-  code: number
-
+  accountId?: number
   /**
-   * Error que dispara el resolver.
+   * Nombre del participante del proveedor CEV.
    */
-  err?: any
-
+  name?: string
   /**
-   * Data asociada a request.
+   * Correo electrónico del participante proveedor CEV.
    */
-  data?: any
+  email?: string
 }

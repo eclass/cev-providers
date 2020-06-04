@@ -1,11 +1,11 @@
-import { Participant, RequestStatus } from '../types'
+import { Participant } from '../types'
 import { fetchEndpoint } from './lib/fetchEndpoint'
 
 export const createParticipant = async (
   participant: Participant,
   token: string,
   url: string
-): Promise<RequestStatus> => {
+): Promise<Participant> => {
   const response = await fetchEndpoint(`${url}/api/xml`, {
     session: token,
     action: 'principal-update',
@@ -19,13 +19,6 @@ export const createParticipant = async (
     'has-children': 0
   })
 
-  if (!response || !response.results) {
-    /**
-     * @todo Documentar error.
-     */
-    throw new Error('Network error')
-  }
-
   const {
     results: { status, principal }
   } = response
@@ -34,18 +27,12 @@ export const createParticipant = async (
    */
   if (status['@_code'] === 'ok') {
     return {
-      success: true,
-      code: 200,
-      detail: '',
-      name: '',
-      data: {
-        principalId: principal['@_principal-id'],
-        accountId: principal['@_account-id'],
-        name: principal.name,
-        login: principal.login,
-        email: participant.username,
-        password: participant.password
-      }
+      principalId: principal['@_principal-id'],
+      accountId: principal['@_account-id'],
+      name: principal.name,
+      login: principal.login,
+      email: participant.username,
+      password: participant.password
     }
   } else {
     /**
@@ -57,27 +44,14 @@ export const createParticipant = async (
       'filter-like-login': participant.username
     })
 
-    if (!getCreatedUser || !getCreatedUser.results) {
-      /**
-       * @todo Documentar error.
-       */
-      throw new Error('Network error')
-    }
-
     const principalUser = getCreatedUser.results['principal-list'].principal
     return {
-      success: true,
-      code: 200,
-      detail: '',
-      name: '',
-      data: {
-        principalId: principalUser['@_principal-id'],
-        accountId: principalUser['@_account-id'],
-        name: principalUser.name,
-        login: principalUser.login,
-        email: participant.username,
-        password: participant.password
-      }
+      principalId: principalUser['@_principal-id'],
+      accountId: principalUser['@_account-id'],
+      name: principalUser.name,
+      login: principalUser.login,
+      email: participant.username,
+      password: participant.password
     }
   }
 }
