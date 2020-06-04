@@ -86,5 +86,5 @@ export abstract class BaseProvider {
     scoId: number,
     principalId: number,
     permissionId: string
-  ): void
+  ): Promise<void>
 }

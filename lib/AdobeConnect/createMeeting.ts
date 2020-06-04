@@ -45,7 +45,7 @@ export const createMeeting = async (
       checkMeeting.results.scos.sco
     ) {
       const returnMeeting = {
-        'sco-id': checkMeeting.results.scos.sco['@_sco-id'],
+        scoId: checkMeeting.results.scos.sco['@_sco-id'],
         url: url + checkMeeting.results.scos.sco['url-path']
       }
       return {
@@ -78,7 +78,7 @@ export const createMeeting = async (
       createMeeting.results.sco
     ) {
       const returnMeeting = {
-        'sco-id': createMeeting.results.sco['@_sco-id'],
+        scoId: createMeeting.results.sco['@_sco-id'],
         url: url + createMeeting.results.sco['url-path']
       }
       return {

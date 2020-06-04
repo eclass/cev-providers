@@ -67,7 +67,8 @@ export class AdobeConnect extends BaseProvider {
       this._meeting = {
         ...meeting,
         id: data['sco-id'],
-        url: data.url
+        url: data.url,
+        scoId: Number(data['sco-id'])
       }
     }
     return response
@@ -87,7 +88,7 @@ export class AdobeConnect extends BaseProvider {
   }
 
   public async participantToMeeting (
-    scoId: number,
+    scoId = 0,
     principalId: number,
     permissionId: string
   ): Promise<void> {
@@ -96,6 +97,13 @@ export class AdobeConnect extends BaseProvider {
      */
     if (!this._logged) {
       await this.login({ username: this._username, password: this._password })
+    }
+
+    /**
+     * Si no viene el scoId, mantenemos el mismo del `createMeeting`.
+     */
+    if (!scoId) {
+      scoId = this._meeting.scoId
     }
 
     return await participantToMeeting(
@@ -123,7 +131,5 @@ export class AdobeConnect extends BaseProvider {
   // deleteParticipant,
   // createMeeting,
   // editMeeting,
-  // deleteMeeting,
-  // goMeeting,
-  // goMeetingTeacher
+  // deleteMeeting
 }
