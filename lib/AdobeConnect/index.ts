@@ -11,6 +11,7 @@ import { createParticipant } from './createParticipant'
 // import deleteParticipant from './deleteParticipant'
 
 import { createMeeting } from './createMeeting'
+import { goMeeting } from './goMeeting'
 // import editMeeting from './editMeeting'
 // import deleteMeeting from './deleteMeeting'
 
@@ -104,6 +105,17 @@ export class AdobeConnect extends BaseProvider {
       this.token,
       this.url
     )
+  }
+
+  public async goMeeting (
+    scoUrl: string,
+    { username, password }: LoginProps
+  ): Promise<RequestStatus> {
+    /**
+     * Loguea a la aplicación de Adobe Connect con el usuario ingresado.
+     */
+    const loginUser = await login({ username, password, url: this.url })
+    return goMeeting(scoUrl, loginUser.data)
   }
 
   // createParticipant,
