@@ -19,7 +19,7 @@ export const fetchEndpoint = async (
     endPointUrl.searchParams.append(key, params[`${key}`])
   )
   const response = await fetch(endPointUrl)
-  if (!response.ok) {
+  if (!response || !response.ok) {
     /**
      * @todo Documentar error.
      */
@@ -39,6 +39,12 @@ export const fetchEndpoint = async (
   if (debug) {
     // eslint-disable-next-line no-console
     console.log(util.inspect(parsed, false, null, true /* enable colors */))
+  }
+  if (!parsed.results) {
+    /**
+     * @todo Documentar error.
+     */
+    throw new Error('Fetch error')
   }
   return parsed
 }

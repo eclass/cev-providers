@@ -1,4 +1,4 @@
-import { LoginProps, RequestStatus, Participant, Meeting } from './types'
+import { LoginProps, Participant, Meeting } from './types'
 
 /**
  * **Módulo** de Proveedor CEV.
@@ -18,73 +18,41 @@ export abstract class BaseProvider {
    *
    * @param {LoginProps} props - Parámetros para el Login del Proveedor CEV.
    */
-  abstract login (props: LoginProps): Promise<RequestStatus>
+  abstract login (props: LoginProps): Promise<string>
 
   /**
    * Método que permite añadir un participante a la reunión.
    * @param {Participant} participant - Instancia de participante a añadir.
    * @param {string} [token] - Token para acceder a la API Proveedor CEV.
    */
-  abstract createParticipant (participant: Participant, token: string): void
-  /**
-   * Método que permite editar un participante de la reunión.
-   * @param {string} token - Token para acceder a la API Proveedor CEV.
-   * @param {Participant} participant - Instancia de participante a editar.
-   */
-  // abstract editParticipant(token: string, participant: Participant): void
-  /**
-   * Método que permite eliminar un participante de la reunión.
-   * @param {string} token - Token para acceder a la API Proveedor CEV.
-   * @param {Participant} participant - Instancia de participante a eliminar.
-   */
-  // abstract deleteParticipant(token: string, participant: Participant): void
+  abstract createParticipant (
+    participant: Participant,
+    token: string
+  ): Promise<Participant>
 
   /**
    * Método que permite crear una reunión.
    * @param {Meeting} meeting - Instancia de meeting a crear.
    * @param {string} [token] - Token para acceder a la API Proveedor CEV.
    */
-  abstract createMeeting (
-    meeting: Meeting,
-    token: string
-  ): Promise<RequestStatus>
-  /**
-   * Método que permite editar una reunión.
-   * @param {string} token - Token para acceder a la API Proveedor CEV.
-   * @param {Meeting} meeting - Instancia de meeting a editar.
-   */
-  // abstract editMeeting(token: string, meeting: Meeting): void
-  /**
-   * Método que permite eliminar una reunión.
-   * @param {string} token - Token para acceder a la API Proveedor CEV.
-   * @param {Meeting} meeting - Instancia de meeting a eliminar.
-   */
-  // abstract deleteMeeting(token: string, meeting: Meeting): void
+  abstract createMeeting (meeting: Meeting, token: string): Promise<Meeting>
 
   /**
    * Devuelve la url con la sesión para conectar directamente a AdobeConnect.
    * @param {string} url - Url del recurso a generar.
    * @param {LoginProps} props - Parametros para el login.
    */
-  abstract goMeeting (url: string, props: LoginProps): Promise<RequestStatus>
-  /**
-   * @todo Complementar parametros y respuestas según funcionamiento actual V6.
-   *
-   * Formatea la pregunta leída desde la base de datos.
-   * @param {string} token - Token para acceder a la API Proveedor CEV.
-   * @param {boolean} param - Primer parametro.
-   */
-  // abstract goMeetingTeacher(token: string, param: boolean): void
+  abstract goMeeting (url: string, props: LoginProps): Promise<string>
 
   /**
    * Añade un participante a la meeting.
-   * @param {number} scoId - Identificador de la reunión.
-   * @param {number} principalId - Identificador del participante.
    * @param {string} permissionId - Rol del participante (host=Anfitrión, mini-host=Presentador, view=Participante, remove=Eliminar participante).
+   * @param {number} principalId - Identificador del participante.
+   * @param {number} scoId - Identificador de la reunión.
    */
   abstract participantToMeeting (
-    scoId: number,
+    permissionId: string,
     principalId: number,
-    permissionId: string
-  ): Promise<void>
+    scoId: number
+  ): Promise<boolean>
 }

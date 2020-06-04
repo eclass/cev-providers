@@ -1,7 +1,12 @@
 {
   "debug.node.autoAttach": "on",
   "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": true,
   "javascript.implicitProjectConfig.checkJs": true,
-  "javascript.validate.enable": true
+  "javascript.validate.enable": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
