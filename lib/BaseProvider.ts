@@ -22,10 +22,10 @@ export abstract class BaseProvider {
 
   /**
    * Método que permite añadir un participante a la reunión.
-   * @param {string} token - Token para acceder a la API Proveedor CEV.
    * @param {Participant} participant - Instancia de participante a añadir.
+   * @param {string} [token] - Token para acceder a la API Proveedor CEV.
    */
-  // abstract createParticipant(token: string, participant: Participant): void
+  abstract createParticipant (participant: Participant, token: string): void
   /**
    * Método que permite editar un participante de la reunión.
    * @param {string} token - Token para acceder a la API Proveedor CEV.
@@ -75,4 +75,16 @@ export abstract class BaseProvider {
    * @param {boolean} param - Primer parametro.
    */
   // abstract goMeetingTeacher(token: string, param: boolean): void
+
+  /**
+   * Añade un participante a la meeting.
+   * @param {number} scoId - Identificador de la reunión.
+   * @param {number} principalId - Identificador del participante.
+   * @param {string} permissionId - Rol del participante (host=Anfitrión, mini-host=Presentador, view=Participante, remove=Eliminar participante).
+   */
+  abstract participantToMeeting (
+    scoId: number,
+    principalId: number,
+    permissionId: string
+  ): void
 }
