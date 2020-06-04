@@ -22,6 +22,10 @@ export type LoginProps = {
 
 export type Meeting = {
   /**
+   * Identificador único de la reunión.
+   */
+  id?: string
+  /**
    * URL API.
    */
   url?: string
