@@ -9,7 +9,7 @@
     "build": "tsc",
     "format": "prettier-standard 'lib/**/*.ts'",
     "lint": "eslint 'lib/**/*.ts' --fix",
-    "test": "cd test && npm run test",
+    "test": "echo \"Nothing found tests.\"",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
     "locallyTest": "tsc test.ts && node test.js"
