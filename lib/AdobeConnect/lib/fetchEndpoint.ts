@@ -9,9 +9,11 @@ type ResultsEndpoint = {
   results: any
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const fetchEndpoint = async (
   url: string,
-  params: unknown,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params: any,
   debug = false
 ): Promise<ResultsEndpoint> => {
   const endPointUrl = new URL(url)
@@ -20,10 +22,7 @@ export const fetchEndpoint = async (
   )
   const response = await fetch(endPointUrl)
   if (!response || !response.ok) {
-    /**
-     * @todo Documentar error.
-     */
-    throw new Error('Network Error')
+    throw new Error(`Network Error on fetch ${url}`)
   }
   const responseText = await response.text()
   if (debug) {
@@ -40,11 +39,9 @@ export const fetchEndpoint = async (
     // eslint-disable-next-line no-console
     console.log(util.inspect(parsed, false, null, true /* enable colors */))
   }
+
   if (!parsed.results) {
-    /**
-     * @todo Documentar error.
-     */
-    throw new Error('Fetch error')
+    throw new Error(`Fetch error on ${url} when tried action ${params?.action}`)
   }
   return parsed
 }

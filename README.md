@@ -8,8 +8,16 @@
 
 > Integración con Provedores de Clases en Vivo
 
-- [ ] Adobe Connect
+- [X] Adobe Connect
 - [ ] Zoom.us
+
+### Library of AdobeConnect
+> Visual Studio Snippets
+- **newCEV**: Added new AdobeConnect object.
+- **createMeeting**: Create a new Meeting.
+- **createParticipant**: Create a new Participant.
+- **participantToMeeting**: Added a participant to meeting.
+- **goMeeting**: Generates a link to meeting.
 
 ## License
 

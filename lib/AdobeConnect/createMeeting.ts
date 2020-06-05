@@ -54,7 +54,7 @@ export const createMeeting = async (
   /**
    * Crear meeting
    */
-  const createMeeting = await fetchEndpoint(url, {
+  const createMeeting = await fetchEndpoint(`${url}/api/xml`, {
     session: token,
     action: 'sco-update',
     type: 'meeting',
@@ -67,9 +67,11 @@ export const createMeeting = async (
 
   if (
     createMeeting.results.status['@_code'] !== 'ok' ||
-    createMeeting.results.sco
+    !createMeeting.results.sco
   ) {
-    throw new Error('Bad response createMeeting')
+    throw new Error(
+      'Bad response createMeeting: ' + createMeeting.results.statusText
+    )
   }
 
   return {
