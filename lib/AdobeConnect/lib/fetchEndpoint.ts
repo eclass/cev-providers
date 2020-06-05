@@ -40,6 +40,7 @@ export const fetchEndpoint = async (
     // eslint-disable-next-line no-console
     console.log(util.inspect(parsed, false, null, true /* enable colors */))
   }
+
   if (!parsed.results) {
     /**
      * @todo Documentar error.
