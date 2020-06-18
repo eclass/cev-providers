@@ -10,9 +10,9 @@
       "es2018",
       "esnext"
     ],
-    "target": "es2017",
+    "target": "ES2018",
     "module": "commonjs",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "outDir": "./dist",
     "rootDir": "./lib",
     "declaration": true,
