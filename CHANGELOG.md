@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/eclass/cev-providers/compare/v1.0.5...v1.0.6) (2020-06-18)
+
+
+### Bug Fixes
+
+* **export:** implements Map ([ef71e2a](https://github.com/eclass/cev-providers/commit/ef71e2acce9ac60e5b29d5a8be203087207d0f57))
+
 ## [1.0.5](https://github.com/eclass/cev-providers/compare/v1.0.4...v1.0.5) (2020-06-18)
 
 
