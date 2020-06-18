@@ -1,3 +1,3 @@
-export * from './BaseProvider'
+import { AdobeConnect } from './AdobeConnect/'
 
-export * from './AdobeConnect/index'
+export const CEVModules = new Map([['AdobeConnect', AdobeConnect]])
