@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/eclass/cev-providers/compare/v1.0.1...v1.0.2) (2020-06-18)
+
+
+### Bug Fixes
+
+* **export:** on index ([#43](https://github.com/eclass/cev-providers/issues/43)) ([16d68b9](https://github.com/eclass/cev-providers/commit/16d68b9c69d7a6a935d973bfa5a02c977cb83a8b))
+
 ## [1.0.1](https://github.com/eclass/cev-providers/compare/v1.0.0...v1.0.1) (2020-06-09)
 
 
