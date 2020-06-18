@@ -1,1 +1,3 @@
-export * from './AdobeConnect'
+export * from './BaseProvider'
+
+export * from './AdobeConnect/index'
