@@ -95,4 +95,10 @@ export type Participant = {
    * Correo electrónico del participante proveedor CEV.
    */
   email?: string
+  /**
+   * Identificador del permiso del participante.
+   *
+   * @todo Zoom.
+   */
+  permissionId?: 'view' | 'host' | 'mini-host' | 'remove'
 }
