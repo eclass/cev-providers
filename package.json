@@ -24,9 +24,9 @@
   "engines": {
     "node": ">=10.16.3"
   },
-  "author": "Team eClass <soporte@eclass.cl> (https://www.eclass.cl/)",
+  "author": "Team eClass <mespinoza@eclass.cl> (https://www.eclass.cl/)",
   "contributors": [
-    "Gabriel Rebolledo <grebolledo@eclass.cl>",
+    "Gabriel I. Rebolledo Espinoza <grebolledo@eclass.cl>",
     "Julio A. Mena Pinto <julio.mena@eclass.cl>"
   ],
   "license": "MIT",
@@ -102,7 +102,7 @@
       "@eclass:js-lib"
     ],
     "assignees": [
-      "enbonnet"
+      "jmenast"
     ]
   },
   "release": {
