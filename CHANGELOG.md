@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/eclass/cev-providers/compare/v1.1.0...v1.1.1) (2020-06-22)
+
+
+### Bug Fixes
+
+* **participant:** added `permissionId` ([#53](https://github.com/eclass/cev-providers/issues/53)) ([405d1d5](https://github.com/eclass/cev-providers/commit/405d1d563a871127b23ae0ed472f86b06a2f9076))
+
 # [1.1.0](https://github.com/eclass/cev-providers/compare/v1.0.8...v1.1.0) (2020-06-22)
 
 
