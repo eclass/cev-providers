@@ -1,3 +1,6 @@
+// Clases
+export * from './index'
+
 /**
  * Parámetros de la función login del Proveedor CEV.
  */
