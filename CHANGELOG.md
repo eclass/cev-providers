@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/eclass/cev-providers/compare/v1.0.8...v1.1.0) (2020-06-22)
+
+
+### Features
+
+* **cev:** stable version ([#52](https://github.com/eclass/cev-providers/issues/52)) ([91c2cff](https://github.com/eclass/cev-providers/commit/91c2cff593a8e8ecb6d79b9b44d44d96722855e9))
+
 ## [1.0.8](https://github.com/eclass/cev-providers/compare/v1.0.7...v1.0.8) (2020-06-22)
 
 
