@@ -1,4 +1,5 @@
-import { LoginProps, Participant, Meeting } from './types'
+import { LoginProps } from './types'
+import { Participant, Meeting } from '.'
 
 /**
  * **Módulo** de Proveedor CEV.
