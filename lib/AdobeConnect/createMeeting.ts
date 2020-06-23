@@ -1,4 +1,4 @@
-import { Meeting } from '../types'
+import { Meeting } from '../'
 import { fetchEndpoint } from './lib/fetchEndpoint'
 
 // import he = require('fast-xml-parser')

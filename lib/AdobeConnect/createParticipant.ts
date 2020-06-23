@@ -1,4 +1,4 @@
-import { Participant } from '../types'
+import { Participant } from '../'
 import { fetchEndpoint } from './lib/fetchEndpoint'
 
 export const createParticipant = async (

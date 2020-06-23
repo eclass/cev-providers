@@ -1,4 +1,5 @@
-import { Meeting, LoginProps, Participant } from '../types'
+import { LoginProps } from '../types'
+import { Meeting, Participant } from '../'
 import { BaseProvider } from '../BaseProvider'
 
 /**
