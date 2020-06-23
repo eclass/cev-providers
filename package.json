@@ -1,6 +1,6 @@
 {
   "name": "@eclass/cev-providers",
-  "version": "1.0.8",
+  "version": "1.1.1",
   "description": "Integración Proveedores CEV",
   "main": "dist/index.js",
   "type": "commonjs",
@@ -24,9 +24,9 @@
   "engines": {
     "node": ">=10.16.3"
   },
-  "author": "Team eClass <soporte@eclass.cl> (https://www.eclass.cl/)",
+  "author": "Team eClass <mespinoza@eclass.cl> (https://www.eclass.cl/)",
   "contributors": [
-    "Gabriel Rebolledo <grebolledo@eclass.cl>",
+    "Gabriel I. Rebolledo Espinoza <grebolledo@eclass.cl>",
     "Julio A. Mena Pinto <julio.mena@eclass.cl>"
   ],
   "license": "MIT",
@@ -48,7 +48,7 @@
     "@types/node": "12.12.47",
     "@typescript-eslint/eslint-plugin": "3.4.0",
     "@typescript-eslint/parser": "3.4.0",
-    "eslint": "7.3.0",
+    "eslint": "7.3.1",
     "eslint-plugin-array-func": "3.1.6",
     "eslint-plugin-eslint-comments": "3.2.0",
     "eslint-plugin-import": "2.21.2",
@@ -102,7 +102,7 @@
       "@eclass:js-lib"
     ],
     "assignees": [
-      "enbonnet"
+      "jmenast"
     ]
   },
   "release": {
