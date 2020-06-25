@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/eclass/cev-providers/compare/v1.1.2...v1.1.3) (2020-06-25)
+
+
+### Bug Fixes
+
+* **go-meeting:** agregamos /api/xml a la url ([#57](https://github.com/eclass/cev-providers/issues/57)) ([80acc47](https://github.com/eclass/cev-providers/commit/80acc47ddd36a933c2e8045827d7e302dd356fbe))
+
 ## [1.1.2](https://github.com/eclass/cev-providers/compare/v1.1.1...v1.1.2) (2020-06-23)
 
 
