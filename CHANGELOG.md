@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/eclass/cev-providers/compare/v1.1.3...v1.1.4) (2020-06-25)
+
+
+### Bug Fixes
+
+* **go-meeting:** rollback :panic: ([b7e70d6](https://github.com/eclass/cev-providers/commit/b7e70d60cd4a5ef168ddb77f1e3d824f2c5ea0a1))
+
 ## [1.1.3](https://github.com/eclass/cev-providers/compare/v1.1.2...v1.1.3) (2020-06-25)
 
 
