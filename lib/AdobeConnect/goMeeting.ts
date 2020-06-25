@@ -7,7 +7,7 @@ import { URL } from 'url'
  *  const goMeeting = goMeeting(url, token)
  */
 export const goMeeting = (url: string, token: string): string => {
-  const returnUrl = new URL(url)
+  const returnUrl = new URL(`${url}/api/xml`)
   returnUrl.searchParams.append('session', token)
   return returnUrl.href
 }
