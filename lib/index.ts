@@ -1,5 +1,6 @@
 // Clases
 export * from './AdobeConnect/'
+export * from './Zoom/'
 
 // Types
 export * from './BaseProvider'
@@ -20,11 +21,11 @@ export type Meeting = {
   /**
    * Nombre reunión
    */
-  name: string
+  name?: string
   /**
    * Fecha inicio meeting
    */
-  dateInit: string
+  dateInit?: string
   /**
    * Fecha fin meeting
    */

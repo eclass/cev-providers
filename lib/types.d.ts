@@ -19,3 +19,16 @@ export type LoginProps = {
    */
   token?: string
 }
+
+/**
+ * Request transversal para hacer solicitudes con token.
+ */
+export type RequestTokenProps = {
+  baseUrl: string
+  token: string
+  method: string
+  pathUrl?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  queryUrl?: any
+  body?: unknown
+}
