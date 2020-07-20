@@ -1,5 +1,5 @@
 import { LoginProps } from '../types'
-import { Meeting, Participant } from '../'
+import { MeetingZoom, Participant } from '../'
 import { BaseProvider } from '../BaseProvider'
 
 /**
@@ -18,7 +18,7 @@ export class Zoom extends BaseProvider {
   private _username: string
   private _password: string
   private _email: string
-  private _meeting: Meeting
+  private _meeting: MeetingZoom
   private _participants: Array<Participant> = []
   private _userId: string
 
@@ -47,7 +47,7 @@ export class Zoom extends BaseProvider {
     return loginInfo.token
   }
 
-  public async createMeeting (meeting: Meeting): Promise<Meeting> {
+  public async createMeeting (meeting: MeetingZoom): Promise<MeetingZoom> {
     /**
      * Si no está logueado, loguea a la aplicación de Zoom.
      */

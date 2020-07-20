@@ -24,11 +24,29 @@ export type LoginProps = {
  * Request transversal para hacer solicitudes con token.
  */
 export type RequestTokenProps = {
+  /**
+   * URL base para api de zoom.
+   */
   baseUrl: string
+  /**
+   * Token del proveedor CEV.
+   */
   token: string
+  /**
+   * Metodo de request.
+   */
   method: string
+  /**
+   * Ruta a concatenar a baseUrl.
+   */
   pathUrl?: string
+  /**
+   * Query a agregar a url.
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   queryUrl?: any
+  /**
+   * Cuerpo del request.
+   */
   body?: unknown
 }

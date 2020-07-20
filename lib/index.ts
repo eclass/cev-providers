@@ -36,6 +36,44 @@ export type Meeting = {
   scoId?: number
 }
 
+export interface MeetingZoom extends Meeting {
+  /**
+   * Nombre
+   */
+  topic?: string
+  /**
+   * Duración de la reunión.
+   */
+  duration?: number
+  // eslint-disable-next-line camelcase
+  start_time: string
+  /**
+   * Tipo de Meeting.
+   */
+  type?: number
+  /**
+   * Zona horaria.
+   */
+  timezone?: string
+  /**
+   * Contraseña a configurar en la meeting.
+   */
+  password?: string
+  /**
+   * Agenda
+   */
+  agenda?: string
+  /**
+   * Agendar para otro usuario
+   */
+  // eslint-disable-next-line camelcase
+  schedule_for?: string
+  /**
+   * Configuraciones
+   */
+  settings?: any
+}
+
 /**
  * Instancia de Participante a la reunión del Proveedor CEV.
  */
