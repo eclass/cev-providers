@@ -7,7 +7,6 @@ const findOrCreate = async (
   url: string
 ): Promise<Participant> => {
   const newParticipant = await fetchEndpoint({
-    baseUrl: `${url}`,
     token,
     method: 'post',
     pathUrl: '/users',
@@ -48,7 +47,6 @@ const findOrCreate = async (
     type,
     group_ids: [groupId]
   } = await fetchEndpoint({
-    baseUrl: `${url}`,
     token,
     method: 'get',
     pathUrl: `/users/${participant.email}`
@@ -80,7 +78,6 @@ export const createParticipant = async (
   const groupId = participant.groupId
   if (groupId && zoomParticipant.groupId === undefined) {
     await fetchEndpoint({
-      baseUrl: `${url}`,
       token,
       method: 'post',
       pathUrl: `/groups/${groupId}/members`,

@@ -26,7 +26,6 @@ export const login = async (
   const token = jwt.sign(payload, password)
   /** Obtener id de usuario para peticiones */
   const getUserInfo = await fetchEndpoint({
-    baseUrl: `${url}`,
     token,
     method: 'get',
     pathUrl: '/users/' + email

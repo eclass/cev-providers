@@ -8,7 +8,6 @@ export const participantToMeeting = async (
   url: string
 ): Promise<boolean> => {
   const added = await fetchEndpoint({
-    baseUrl: `${url}/api/xml`,
     method: 'get',
     token
   })

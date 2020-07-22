@@ -19,10 +19,9 @@ export const createMeeting = async (
   }
   const optionsMeeting = { ...baseMeeting, ...propsZoom }
   return await fetchEndpoint({
-    baseUrl: `${propsZoom.url}`,
     token,
     method: 'post',
-    pathUrl: `/v2/users/${userId}/meetings`,
+    pathUrl: `/users/${userId}/meetings`,
     body: optionsMeeting
   })
 }

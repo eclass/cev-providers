@@ -25,10 +25,6 @@ export type LoginProps = {
  */
 export type RequestTokenProps = {
   /**
-   * URL base para api de zoom.
-   */
-  baseUrl: string
-  /**
    * Token del proveedor CEV.
    */
   token: string
