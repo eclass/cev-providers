@@ -62,3 +62,7 @@ typings/
 
 # typescript dist directory
 dist
+
+# Temporary JS
+*.js
+testZoom.ts

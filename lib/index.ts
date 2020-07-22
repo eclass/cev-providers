@@ -79,6 +79,10 @@ export interface MeetingZoom extends Meeting {
  */
 export type Participant = {
   /**
+   * Identificador del usuario al proveedor CEV.
+   */
+  id?: string | number
+  /**
    * Nombre de usuario al proveedor CEV.
    */
   username?: string
@@ -117,8 +121,14 @@ export type Participant = {
   email?: string
   /**
    * Identificador del permiso del participante.
-   *
-   * @todo Zoom.
    */
   permissionId?: 'view' | 'host' | 'mini-host' | 'remove'
+  /**
+   * Identificador del rol del participante en Zoom CEV.
+   */
+  type?: string
+  /**
+   * Identificador del grupo al que puede pertenecer un participante.
+   */
+  groupId?: string
 }

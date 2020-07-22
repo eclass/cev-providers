@@ -7,7 +7,7 @@ export const fetchEndpoint = async (
   { baseUrl, token, method, pathUrl, queryUrl, body }: RequestTokenProps,
   debug = false
 ): Promise<any> => {
-  const endPointUrl = new URL(pathUrl, baseUrl)
+  const endPointUrl = new URL(`/v2${pathUrl}`, baseUrl)
   if (queryUrl) {
     Object.keys(queryUrl).forEach(key =>
       endPointUrl.searchParams.append(key, queryUrl[`${key}`])
@@ -26,7 +26,7 @@ export const fetchEndpoint = async (
     // eslint-disable-next-line no-console
     console.log({ responseText })
   }
-  if (!response || !response.ok) {
+  if (!response) {
     throw new Error(`Network Error on fetch ${baseUrl}`)
   }
   return responseText
