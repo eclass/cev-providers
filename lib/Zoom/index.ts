@@ -125,12 +125,21 @@ export class Zoom extends BaseProvider {
   }
 
   public async goMeeting (
-    scoUrl: string,
-    { username, password }: LoginProps
+    url: string,
+    { username, password }: LoginProps,
+    meetingId: number,
+    email: string
   ): Promise<string> {
+    /**
+     * Si no está logueado, loguea a la aplicación de Zoom.
+     */
+    if (!this._logged) {
+      await this.login({ username, password })
+    }
+
     /**
      * Loguea a la aplicación de Zoom con el usuario ingresado.
      */
-    return await goMeeting(scoUrl, this.token)
+    return await goMeeting(null, this.token, meetingId, email)
   }
 }
