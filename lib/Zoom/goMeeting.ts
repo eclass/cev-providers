@@ -24,5 +24,5 @@ export const goMeeting = async (
   const registrant = searchRegistrants.registrants.filter(
     record => record.email === email
   )
-  return registrant.email
+  return registrant.join_url
 }
