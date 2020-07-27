@@ -1,5 +1,6 @@
 // Clases
 export * from './AdobeConnect/'
+export * from './Zoom/'
 
 // Types
 export * from './BaseProvider'
@@ -20,11 +21,11 @@ export type Meeting = {
   /**
    * Nombre reunión
    */
-  name: string
+  name?: string
   /**
    * Fecha inicio meeting
    */
-  dateInit: string
+  dateInit?: string
   /**
    * Fecha fin meeting
    */
@@ -35,10 +36,52 @@ export type Meeting = {
   scoId?: number
 }
 
+export interface MeetingZoom extends Meeting {
+  /**
+   * Nombre
+   */
+  topic?: string
+  /**
+   * Duración de la reunión.
+   */
+  duration?: number
+  // eslint-disable-next-line camelcase
+  start_time: string
+  /**
+   * Tipo de Meeting.
+   */
+  type?: number
+  /**
+   * Zona horaria.
+   */
+  timezone?: string
+  /**
+   * Contraseña a configurar en la meeting.
+   */
+  password?: string
+  /**
+   * Agenda
+   */
+  agenda?: string
+  /**
+   * Agendar para otro usuario
+   */
+  // eslint-disable-next-line camelcase
+  schedule_for?: string
+  /**
+   * Configuraciones
+   */
+  settings?: any
+}
+
 /**
  * Instancia de Participante a la reunión del Proveedor CEV.
  */
 export type Participant = {
+  /**
+   * Identificador del usuario al proveedor CEV.
+   */
+  id?: string | number
   /**
    * Nombre de usuario al proveedor CEV.
    */
@@ -78,8 +121,14 @@ export type Participant = {
   email?: string
   /**
    * Identificador del permiso del participante.
-   *
-   * @todo Zoom.
    */
   permissionId?: 'view' | 'host' | 'mini-host' | 'remove'
+  /**
+   * Identificador del rol del participante en Zoom CEV.
+   */
+  type?: string
+  /**
+   * Identificador del grupo al que puede pertenecer un participante.
+   */
+  groupId?: string
 }

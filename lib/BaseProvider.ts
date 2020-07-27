@@ -43,7 +43,13 @@ export abstract class BaseProvider {
    * @param {string} url - Url del recurso a generar.
    * @param {LoginProps} props - Parametros para el login.
    */
-  abstract goMeeting (url: string, props: LoginProps): Promise<string>
+  // abstract goMeeting (url: string, props: LoginProps): Promise<string>
+  abstract goMeeting (
+    url: string,
+    props: LoginProps,
+    meetingId?: number,
+    email?: string
+  ): Promise<string>
 
   /**
    * Añade un participante a la meeting.

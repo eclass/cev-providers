@@ -19,3 +19,30 @@ export type LoginProps = {
    */
   token?: string
 }
+
+/**
+ * Request transversal para hacer solicitudes con token.
+ */
+export type RequestTokenProps = {
+  /**
+   * Token del proveedor CEV.
+   */
+  token: string
+  /**
+   * Metodo de request.
+   */
+  method: string
+  /**
+   * Ruta a concatenar a baseUrl.
+   */
+  pathUrl?: string
+  /**
+   * Query a agregar a url.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  queryUrl?: any
+  /**
+   * Cuerpo del request.
+   */
+  body?: unknown
+}

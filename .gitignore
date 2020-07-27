@@ -62,3 +62,7 @@ typings/
 
 # typescript dist directory
 dist
+
+# Temporary Tests
+testZoom.ts
+.DS_Store
