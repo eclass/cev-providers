@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/eclass/cev-providers/compare/v2.0.1...v2.0.2) (2020-07-27)
+
+
+### Bug Fixes
+
+* **zoom:** refactor code to zoom integration ([#84](https://github.com/eclass/cev-providers/issues/84)) ([04eabec](https://github.com/eclass/cev-providers/commit/04eabec6c049f2c30ac878eaadcafb43109b4e34))
+
 ## [2.0.1](https://github.com/eclass/cev-providers/compare/v2.0.0...v2.0.1) (2020-07-27)
 
 
