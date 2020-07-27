@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/eclass/cev-providers/compare/v2.0.0...v2.0.1) (2020-07-27)
+
+
+### Bug Fixes
+
+* **jwt:** update to 8.x ([#82](https://github.com/eclass/cev-providers/issues/82)) ([95da7df](https://github.com/eclass/cev-providers/commit/95da7df4ccbcd283c8c4bce105639eb6ec932d05))
+
 # [2.0.0](https://github.com/eclass/cev-providers/compare/v1.1.4...v2.0.0) (2020-07-27)
 
 
