@@ -1,4 +1,5 @@
 import { fetchEndpoint } from '../Zoom/lib/fetchEndpoint'
+import { GoMeetingProps } from '..'
 
 /**
  * Genera url formateada con session para ingresar a llamada
@@ -6,12 +7,9 @@ import { fetchEndpoint } from '../Zoom/lib/fetchEndpoint'
  * @example
  *  const goMeeting = goMeeting(url, token, meetingId, email)
  */
-export const goMeeting = async (
-  url: string,
-  token: string,
-  meetingId: number,
-  email: string
-): Promise<string> => {
+export const goMeeting = async (props: GoMeetingProps): Promise<string> => {
+  const { token, meetingId, email } = props
+
   const searchRegistrants = await fetchEndpoint({
     token,
     method: 'get',

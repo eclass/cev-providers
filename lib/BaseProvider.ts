@@ -1,5 +1,10 @@
 import { LoginProps } from './types'
-import { Participant, Meeting } from '.'
+import {
+  Participant,
+  Meeting,
+  ParticipantToMeetingProps,
+  GoMeetingProps
+} from '.'
 
 /**
  * **Módulo** de Proveedor CEV.
@@ -40,26 +45,16 @@ export abstract class BaseProvider {
 
   /**
    * Devuelve la url con la sesión para conectar directamente a AdobeConnect.
-   * @param {string} url - Url del recurso a generar.
-   * @param {LoginProps} props - Parametros para el login.
+   * @param {GoMeetingProps} props - Parámetros de goMeeting.
    */
   // abstract goMeeting (url: string, props: LoginProps): Promise<string>
-  abstract goMeeting (
-    url: string,
-    props: LoginProps,
-    meetingId?: number,
-    email?: string
-  ): Promise<string>
+  abstract goMeeting (props: GoMeetingProps): Promise<string>
 
   /**
    * Añade un participante a la meeting.
-   * @param {string} permissionId - Rol del participante (host=Anfitrión, mini-host=Presentador, view=Participante, remove=Eliminar participante).
-   * @param {number} principalId - Identificador del participante.
-   * @param {number} scoId - Identificador de la reunión.
+   * @param {ParticipantToMeetingProps} props - Parámetros de ParticipantToMeeting.
    */
   abstract participantToMeeting (
-    permissionId: string,
-    principalId: number,
-    scoId: number
+    props: ParticipantToMeetingProps
   ): Promise<boolean>
 }

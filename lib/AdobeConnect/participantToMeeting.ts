@@ -1,12 +1,10 @@
 import { fetchEndpoint } from './lib/fetchEndpoint'
+import { ParticipantToMeetingProps } from '..'
 
 export const participantToMeeting = async (
-  scoId: number,
-  principalId: number,
-  permissionId: string,
-  token: string,
-  url: string
+  props: ParticipantToMeetingProps
 ): Promise<boolean> => {
+  const { scoId, principalId, permissionId, token, url } = props
   const added = await fetchEndpoint(`${url}/api/xml`, {
     session: token,
     action: 'permissions-update',
