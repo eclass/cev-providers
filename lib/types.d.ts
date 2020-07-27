@@ -18,6 +18,8 @@ export type LoginProps = {
    * Token del Proveedor CEV.
    */
   token?: string
+  meetingId?: string
+  email?: string
 }
 
 /**

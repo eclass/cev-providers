@@ -1,3 +1,5 @@
+import { LoginProps } from './types'
+
 // Clases
 export * from './AdobeConnect/'
 export * from './Zoom/'
@@ -5,73 +7,101 @@ export * from './Zoom/'
 // Types
 export * from './BaseProvider'
 
+/**
+ * Instancia de Meeting del Proveedor CEV.
+ */
 export type Meeting = {
   /**
-   * Identificador único de la reunión.
-   */
-  id?: string
-  /**
-   * URL API.
-   */
-  url?: string
-  /**
-   * Token del Proveedor CEV.
-   */
-  token?: string
-  /**
    * Nombre reunión
+   * @requires AdobeConnect
+   * @requires Zoom
    */
   name?: string
   /**
    * Fecha inicio meeting
+   * @requires AdobeConnect
+   * @requires Zoom
    */
   dateInit?: string
   /**
    * Fecha fin meeting
+   * @requires AdobeConnect
    */
   dateEnd?: string
-  /**
-   * Identificador del scheduleId.
-   */
-  scoId?: number
-}
 
-export interface MeetingZoom extends Meeting {
-  /**
-   * Nombre
-   */
-  topic?: string
   /**
    * Duración de la reunión.
+   * @requires Zoom
    */
   duration?: number
-  // eslint-disable-next-line camelcase
-  start_time: string
+
+  /**
+   * Identificador único de la reunión.
+   * @requires AdobeConnect
+   * @emits
+   */
+  id?: string
+  /**
+   * URL API.
+   * @requires AdobeConnect
+   * @emits
+   */
+  url?: string
+  /**
+   * Token del Proveedor CEV.
+   * @requires AdobeConnect
+   * @requires Zoom
+   * @emits
+   */
+  token?: string
+  /**
+   * Identificador del scheduleId.
+   * @requires AdobeConnect
+   * @emits
+   */
+  scoId?: number
+
   /**
    * Tipo de Meeting.
+   * @requires Zoom
    */
   type?: number
   /**
    * Zona horaria.
+   * @requires Zoom
    */
   timezone?: string
   /**
    * Contraseña a configurar en la meeting.
+   * @requires Zoom
    */
   password?: string
   /**
-   * Agenda
+   * Topic.
+   * @requires Zoom
+   */
+  topic?: string
+  /**
+   * Agenda.
+   * @requires Zoom
    */
   agenda?: string
   /**
    * Agendar para otro usuario
+   * @requires Zoom
    */
-  // eslint-disable-next-line camelcase
-  schedule_for?: string
+  scheduleFor?: string
   /**
    * Configuraciones
+   * @requires Zoom
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   settings?: any
+  /**
+   * userId.
+   * @requires Zoom
+   */
+  userId?: string
 }
 
 /**
@@ -131,4 +161,94 @@ export type Participant = {
    * Identificador del grupo al que puede pertenecer un participante.
    */
   groupId?: string
+}
+
+/**
+ * Constructor del Proveedor CEV.
+ */
+export type ProviderConstructor = {
+  url?: string
+  username?: string
+  password?: string
+  email?: string
+}
+
+/**
+ * Parámetros para participantToMeeting en Proveedor CEV.
+ */
+export type ParticipantToMeetingProps = {
+  /**
+   * Rol del participante (host=Anfitrión, mini-host=Presentador, view=Participante, remove=Eliminar participante).
+   * @requires AdobeConnect
+   */
+  permissionId?: string
+  /**
+   * Identificador del participante.
+   * @requires AdobeConnect
+   */
+  principalId?: number
+  /**
+   * Identificador de la reunión.
+   * @requires AdobeConnect
+   */
+  scoId?: number
+  /**
+   * URL.
+   * @requires AdobeConnect
+   */
+  url?: string
+  /**
+   * Token.
+   * @requires AdobeConnect
+   * @requires Zoom
+   */
+  token?: string
+
+  /**
+   * Reunión
+   * @requires Zoom
+   */
+  meeting?: Meeting
+  /**
+   * Participante
+   * @requires Zoom
+   */
+  participant?: Participant
+}
+
+/**
+ * Parámetros para goMeeting en Proveedor CEV.
+ */
+export type GoMeetingProps = {
+  /**
+   * URL de la Meeting.
+   * @requires AdobeConnect
+   */
+  scoUrl?: string
+  /**
+   * Datos para loguearse.
+   * @requires AdobeConnect
+   */
+  loginProps?: LoginProps
+
+  /**
+   * URL.
+   * @requires Zoom
+   */
+  url?: string
+  /**
+   * Token.
+   * @requires Zoom
+   */
+  token?: string
+  /**
+   * meetingId.
+   * @requires Zoom
+   */
+  meetingId?: number
+  /**
+   * E-Mail.
+   * @requires Zoom
+   */
+  email?: string
 }

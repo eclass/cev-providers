@@ -9,10 +9,13 @@ import { fetchEndpoint } from './lib/fetchEndpoint'
  * @example
  *  const createMeeting = createMeeting({url, name, dateInit, dateEnd})
  */
-export const createMeeting = async (
-  { url, name, dateInit, dateEnd }: Meeting,
-  token: string
-): Promise<Meeting> => {
+export const createMeeting = async ({
+  url,
+  name,
+  dateInit,
+  dateEnd,
+  token
+}: Meeting): Promise<Meeting> => {
   let scoId = null
 
   /**

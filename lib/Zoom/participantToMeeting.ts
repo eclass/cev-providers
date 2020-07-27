@@ -1,16 +1,20 @@
 import { fetchEndpoint } from './lib/fetchEndpoint'
+import { ParticipantToMeetingProps } from '..'
 
 export const participantToMeeting = async (
-  scoId: number,
-  principalId: number,
-  permissionId: string,
-  token: string,
-  url: string
+  props: ParticipantToMeetingProps
 ): Promise<boolean> => {
+  const { meeting, participant, token } = props
+
   const added = await fetchEndpoint({
-    method: 'get',
-    token
+    token,
+    method: 'post',
+    pathUrl: `/meetings/${meeting.id}/registrants`,
+    body: {
+      email: participant.email,
+      first_name: participant.firstName
+    }
   })
 
-  return true
+  return !!added
 }

@@ -1,5 +1,11 @@
 import { LoginProps } from '../types'
-import { Meeting, Participant } from '../'
+import {
+  Meeting,
+  Participant,
+  ProviderConstructor,
+  ParticipantToMeetingProps,
+  GoMeetingProps
+} from '../'
 import { BaseProvider } from '../BaseProvider'
 
 /**
@@ -22,14 +28,18 @@ export class AdobeConnect extends BaseProvider {
 
   private _logged = false
 
-  constructor (url: string, username: string, password: string) {
+  constructor (props: ProviderConstructor) {
     super()
+
+    const { url, username, password } = props
     this.url = url
     this._username = username
     this._password = password
   }
 
-  public async login ({ username, password }: LoginProps): Promise<string> {
+  public async login (props: LoginProps): Promise<string> {
+    const { username, password } = props
+
     const token = await login({ username, password, url: this.url })
     if (token) {
       this.token = token
@@ -46,13 +56,11 @@ export class AdobeConnect extends BaseProvider {
       await this.login({ username: this._username, password: this._password })
     }
 
-    const Meeting = await createMeeting(
-      {
-        ...meeting,
-        url: this.url
-      },
-      this.token
-    )
+    const Meeting = await createMeeting({
+      ...meeting,
+      url: this.url,
+      token: this.token
+    })
 
     if (!Meeting) {
       throw new Error('Empty meeting')
@@ -87,10 +95,11 @@ export class AdobeConnect extends BaseProvider {
   }
 
   public async participantToMeeting (
-    permissionId: string,
-    principalId: number,
-    scoId = 0
+    props: ParticipantToMeetingProps
   ): Promise<boolean> {
+    const { permissionId, principalId } = props
+    let scoId = props.scoId || 0
+
     /**
      * Si no está logueado, loguea a la aplicación de Adobe Connect.
      */
@@ -105,19 +114,21 @@ export class AdobeConnect extends BaseProvider {
       scoId = this._meeting.scoId
     }
 
-    return await participantToMeeting(
+    return await participantToMeeting({
       scoId,
       principalId,
       permissionId,
-      this.token,
-      this.url
-    )
+      token: this.token,
+      url: this.url
+    })
   }
 
-  public async goMeeting (
-    scoUrl: string,
-    { username, password }: LoginProps
-  ): Promise<string> {
+  public async goMeeting (props: GoMeetingProps): Promise<string> {
+    const {
+      scoUrl,
+      loginProps: { username, password }
+    } = props
+
     /**
      * Loguea a la aplicación de Adobe Connect con el usuario ingresado.
      */
