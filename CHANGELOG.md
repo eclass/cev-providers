@@ -1,3 +1,17 @@
+# [2.0.0](https://github.com/eclass/cev-providers/compare/v1.1.4...v2.0.0) (2020-07-27)
+
+
+### feature
+
+* **zoom:** init provider ([#77](https://github.com/eclass/cev-providers/issues/77)) ([1afe933](https://github.com/eclass/cev-providers/commit/1afe93347474ace86df6f1b4dc732c66635217df))
+
+
+### BREAKING CHANGES
+
+* **zoom:** Implementacion de Zoom
+
+Co-authored-by: Gabriel Rebolledo <grebolledo@eclass.cl>
+
 ## [1.1.4](https://github.com/eclass/cev-providers/compare/v1.1.3...v1.1.4) (2020-06-25)
 
 
