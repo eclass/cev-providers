@@ -106,7 +106,10 @@ export class Zoom extends BaseProvider {
       await this.login({ username: this._username, password: this._password })
     }
 
-    return await participantToMeeting(props)
+    return await participantToMeeting({
+      ...props,
+      token: this.token
+    })
   }
 
   public async goMeeting (props: GoMeetingProps): Promise<string> {
@@ -120,6 +123,9 @@ export class Zoom extends BaseProvider {
     /**
      * Loguea a la aplicación de Zoom con el usuario ingresado.
      */
-    return await goMeeting(props)
+    return await goMeeting({
+      ...props,
+      token: this.token
+    })
   }
 }
