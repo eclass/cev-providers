@@ -56,13 +56,11 @@ export class AdobeConnect extends BaseProvider {
       await this.login({ username: this._username, password: this._password })
     }
 
-    const Meeting = await createMeeting(
-      {
-        ...meeting,
-        url: this.url
-      },
-      this.token
-    )
+    const Meeting = await createMeeting({
+      ...meeting,
+      url: this.url,
+      token: this.token
+    })
 
     if (!Meeting) {
       throw new Error('Empty meeting')

@@ -14,7 +14,7 @@ export type Meeting = {
   /**
    * Nombre reunión
    * @requires AdobeConnect
-   * @requires Zoom (translate to `name`, `topic` and `agenda`)
+   * @requires Zoom
    */
   name?: string
   /**
@@ -50,6 +50,7 @@ export type Meeting = {
   /**
    * Token del Proveedor CEV.
    * @requires AdobeConnect
+   * @requires Zoom
    * @emits
    */
   token?: string
@@ -75,19 +76,32 @@ export type Meeting = {
    * @requires Zoom
    */
   password?: string
-
+  /**
+   * Topic.
+   * @requires Zoom
+   */
+  topic?: string
+  /**
+   * Agenda.
+   * @requires Zoom
+   */
+  agenda?: string
   /**
    * Agendar para otro usuario
    * @requires Zoom
    */
-  // eslint-disable-next-line camelcase
-  schedule_for?: string
+  scheduleFor?: string
   /**
    * Configuraciones
    * @requires Zoom
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   settings?: any
+  /**
+   * userId.
+   * @requires Zoom
+   */
+  userId?: string
 }
 
 /**

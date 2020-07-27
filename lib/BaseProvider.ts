@@ -11,13 +11,14 @@ import {
  */
 export abstract class BaseProvider {
   /**
-   * Dominio proveedor
+   * Dominio proveedor.
    */
   url: string
   /**
-   * Token del proveedor
+   * Token del proveedor.
    */
   token: string
+
   /**
    * Método que autentifica contra el proveedor el usuario con privilegios
    * para crear una reunión.
@@ -29,19 +30,14 @@ export abstract class BaseProvider {
   /**
    * Método que permite añadir un participante a la reunión.
    * @param {Participant} participant - Instancia de participante a añadir.
-   * @param {string} [token] - Token para acceder a la API Proveedor CEV.
    */
-  abstract createParticipant (
-    participant: Participant,
-    token: string
-  ): Promise<Participant>
+  abstract createParticipant (participant: Participant): Promise<Participant>
 
   /**
    * Método que permite crear una reunión.
    * @param {Meeting} meeting - Instancia de meeting a crear.
-   * @param {string} [token] - Token para acceder a la API Proveedor CEV.
    */
-  abstract createMeeting (meeting: Meeting, token: string): Promise<Meeting>
+  abstract createMeeting (meeting: Meeting): Promise<Meeting>
 
   /**
    * Devuelve la url con la sesión para conectar directamente a AdobeConnect.

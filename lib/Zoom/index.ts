@@ -58,14 +58,12 @@ export class Zoom extends BaseProvider {
       await this.login({ username: this._username, password: this._password })
     }
 
-    const Meeting = await createMeeting(
-      {
-        ...meeting,
-        url: this.url
-      },
-      this.token,
-      this._userId
-    )
+    const Meeting = await createMeeting({
+      ...meeting,
+      url: this.url,
+      token: this.token,
+      userId: this._userId
+    })
 
     if (!Meeting) {
       throw new Error('Empty meeting')
