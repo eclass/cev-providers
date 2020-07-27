@@ -19,7 +19,7 @@ export const goMeeting = async (props: GoMeetingProps): Promise<string> => {
   /**
    * @todo Pagination.
    */
-  const registrant = searchRegistrants.registrants.filter(
+  const registrant = searchRegistrants.registrants.find(
     record => record.email === email
   )
   return registrant.join_url
