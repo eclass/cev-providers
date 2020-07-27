@@ -114,10 +114,8 @@ export class AdobeConnect extends BaseProvider {
     )
   }
 
-  public async goMeeting (
-    scoUrl: string,
-    { username, password }: LoginProps
-  ): Promise<string> {
+  public async goMeeting (scoUrl: string, props: LoginProps): Promise<string> {
+    const { username, password } = props
     /**
      * Loguea a la aplicación de Adobe Connect con el usuario ingresado.
      */
