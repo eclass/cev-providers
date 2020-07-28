@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/eclass/cev-providers/compare/v2.0.3...v2.0.4) (2020-07-28)
+
+
+### Bug Fixes
+
+* types meeting ([#87](https://github.com/eclass/cev-providers/issues/87)) ([816eded](https://github.com/eclass/cev-providers/commit/816eded33b9fd5654bea4b14d8d4d58533c1df75))
+
 ## [2.0.3](https://github.com/eclass/cev-providers/compare/v2.0.2...v2.0.3) (2020-07-28)
 
 
