@@ -102,6 +102,12 @@ export type Meeting = {
    * @requires Zoom
    */
   userId?: string
+
+  /**
+   * start_url
+   * @requires Zoom
+   */
+  startUrl?: string
 }
 
 /**
