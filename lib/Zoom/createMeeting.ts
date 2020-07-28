@@ -34,10 +34,15 @@ export const createMeeting = async (meeting: Meeting): Promise<Meeting> => {
     settings
   }
 
-  return await fetchEndpoint({
+  const created = await fetchEndpoint({
     token,
     method: 'post',
     pathUrl: `/users/${userId}/meetings`,
     body: baseMeeting
   })
+
+  return {
+    ...created,
+    startUrl: created.start_url
+  }
 }
