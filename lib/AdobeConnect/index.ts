@@ -24,7 +24,9 @@ export class AdobeConnect extends BaseProvider {
   private _username: string
   private _password: string
   private _meeting: Meeting
+  private _email: string
   private _participants: Array<Participant> = []
+  private _userId: string
 
   private _logged = false
 
