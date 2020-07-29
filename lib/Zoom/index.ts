@@ -17,6 +17,7 @@ import { createParticipant } from './createParticipant'
 
 import { createMeeting } from './createMeeting'
 import { goMeeting } from './goMeeting'
+import { goMeetingTeacher } from './goMeetingTeacher'
 
 import { participantToMeeting } from './participantToMeeting'
 
@@ -125,6 +126,23 @@ export class Zoom extends BaseProvider {
      * Loguea a la aplicación de Zoom con el usuario ingresado.
      */
     return await goMeeting({
+      ...props,
+      token: this.token
+    })
+  }
+
+  public async goMeetingTeacher (props: GoMeetingProps): Promise<string> {
+    /**
+     * Si no está logueado, loguea a la aplicación de Zoom.
+     */
+    if (!this._logged) {
+      await this.login({ username: this._username, password: this._password })
+    }
+
+    /**
+     * Obtiene start_url de meetingId ingresado.
+     */
+    return await goMeetingTeacher({
       ...props,
       token: this.token
     })
