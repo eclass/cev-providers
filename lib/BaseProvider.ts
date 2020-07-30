@@ -47,6 +47,12 @@ export abstract class BaseProvider {
   abstract goMeeting (props: GoMeetingProps): Promise<string>
 
   /**
+   * Devuelve la url con la sesión para conectar directamente al proveedor.
+   * @param {GoMeetingProps} props - Parámetros de goMeeting.
+   */
+  abstract goMeetingTeacher (props: GoMeetingProps): Promise<string>
+
+  /**
    * Añade un participante a la meeting.
    * @param {ParticipantToMeetingProps} props - Parámetros de ParticipantToMeeting.
    */
