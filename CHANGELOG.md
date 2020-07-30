@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/eclass/cev-providers/compare/v2.0.4...v2.1.0) (2020-07-30)
+
+
+### Features
+
+* **providers:** added goMeetingTeacher ([#89](https://github.com/eclass/cev-providers/issues/89)) ([2624b2e](https://github.com/eclass/cev-providers/commit/2624b2ec28c888c1dde3f4b2e7b84f98114e7590))
+
 ## [2.0.4](https://github.com/eclass/cev-providers/compare/v2.0.3...v2.0.4) (2020-07-28)
 
 
