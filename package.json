@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/eclass/cev-providers#readme",
   "dependencies": {
-    "node-fetch": "2.6.0",
+    "node-fetch": "2.6.1",
     "fast-xml-parser": "3.17.4",
     "jsonwebtoken": "8.5.1"
   },
