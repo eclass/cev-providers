@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/eclass/cev-providers/compare/v2.1.0...v2.1.1) (2020-09-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency node-fetch to v2.6.1 ([d9fee8f](https://github.com/eclass/cev-providers/commit/d9fee8f3a67731c05211235585448479198c181c))
+
 # [2.1.0](https://github.com/eclass/cev-providers/compare/v2.0.4...v2.1.0) (2020-07-30)
 
 
