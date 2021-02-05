@@ -1,3 +1,10 @@
+## [2.1.4](https://github.com/eclass/cev-providers/compare/v2.1.3...v2.1.4) (2021-02-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency fast-xml-parser to v3.18.0 ([e5dc69c](https://github.com/eclass/cev-providers/commit/e5dc69cb15a4d818ea755a9f4380a131f2bece7c))
+
 ## [2.1.3](https://github.com/eclass/cev-providers/compare/v2.1.2...v2.1.3) (2020-12-27)
 
 
