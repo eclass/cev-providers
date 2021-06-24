@@ -11,11 +11,11 @@ export const goMeetingTeacher = async (
   props: GoMeetingProps
 ): Promise<string> => {
   const { token, meetingId } = props
-  const meeting = await fetchEndpoint({
+  const { response } = await fetchEndpoint({
     token,
     method: 'get',
     pathUrl: `/meetings/${meetingId}`
   })
 
-  return meeting.start_url
+  return response.start_url
 }

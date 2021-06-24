@@ -1,13 +1,9 @@
 import { URL } from 'url'
 import util = require('util')
+import { FetchEndpoint } from '../../'
 
 import parser = require('fast-xml-parser')
 import fetch = require('node-fetch')
-
-type ResultsEndpoint = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  results: any
-}
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const fetchEndpoint = async (
@@ -15,7 +11,7 @@ export const fetchEndpoint = async (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   params: any,
   debug = false
-): Promise<ResultsEndpoint> => {
+): Promise<FetchEndpoint> => {
   const endPointUrl = new URL(url)
   Object.keys(params).forEach(key =>
     endPointUrl.searchParams.append(key, params[`${key}`])
@@ -43,5 +39,13 @@ export const fetchEndpoint = async (
   if (!parsed.results) {
     throw new Error(`Fetch error on ${url} when tried action ${params?.action}`)
   }
-  return parsed
+  return {
+    response: parsed,
+    log: {
+      headers: response.headers,
+      status: response.status,
+      statusText: response.statusText,
+      url: response.url
+    }
+  }
 }

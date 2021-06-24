@@ -6,7 +6,7 @@ export const createParticipant = async (
   token: string,
   url: string
 ): Promise<Participant> => {
-  const response = await fetchEndpoint(`${url}/api/xml`, {
+  const { response, log } = await fetchEndpoint(`${url}/api/xml`, {
     session: token,
     action: 'principal-update',
     'first-name': participant.firstName,
@@ -32,7 +32,8 @@ export const createParticipant = async (
       name: principal.name,
       login: principal.login,
       email: participant.username,
-      password: participant.password
+      password: participant.password,
+      log
     }
   } else {
     /**
@@ -44,14 +45,16 @@ export const createParticipant = async (
       'filter-like-login': participant.username
     })
 
-    const principalUser = getCreatedUser.results['principal-list'].principal
+    const principalUser =
+      getCreatedUser.response.results['principal-list'].principal
     return {
       principalId: principalUser['@_principal-id'],
       accountId: principalUser['@_account-id'],
       name: principalUser.name,
       login: principalUser.login,
       email: participant.username,
-      password: participant.password
+      password: participant.password,
+      log: getCreatedUser.log
     }
   }
 }
