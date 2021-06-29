@@ -25,9 +25,8 @@ export const createMeeting = async ({
     session: token,
     action: 'sco-shortcuts'
   })
-
-  if (getShortcutId.results.status['@_code'] === 'ok') {
-    scoId = getShortcutId.results.shortcuts.sco.find(
+  if (getShortcutId.response.results.status['@_code'] === 'ok') {
+    scoId = getShortcutId.response.results.shortcuts.sco.find(
       short => short['@_type'] === 'user-meetings'
     )['@_sco-id']
   }
@@ -43,14 +42,15 @@ export const createMeeting = async ({
     'filter-name': name
   })
   if (
-    checkMeeting.results.status['@_code'] === 'ok' &&
-    checkMeeting.results.scos.sco
+    checkMeeting.response.results.status['@_code'] === 'ok' &&
+    checkMeeting.response.results.scos.sco
   ) {
     return {
       name,
       dateInit,
-      scoId: checkMeeting.results.scos.sco['@_sco-id'],
-      url: url + checkMeeting.results.scos.sco['url-path']
+      scoId: checkMeeting.response.results.scos.sco['@_sco-id'],
+      url: url + checkMeeting.response.results.scos.sco['url-path'],
+      log: checkMeeting.log
     }
   }
 
@@ -69,18 +69,19 @@ export const createMeeting = async ({
   })
 
   if (
-    createMeeting.results.status['@_code'] !== 'ok' ||
-    !createMeeting.results.sco
+    createMeeting.response.results.status['@_code'] !== 'ok' ||
+    !createMeeting.response.results.sco
   ) {
     throw new Error(
-      'Bad response createMeeting: ' + createMeeting.results.statusText
+      'Bad response createMeeting: ' + createMeeting.response.results.statusText
     )
   }
 
   return {
     name,
     dateInit,
-    scoId: createMeeting.results.sco['@_sco-id'],
-    url: url + createMeeting.results.sco['url-path']
+    scoId: createMeeting.response.results.sco['@_sco-id'],
+    url: url + createMeeting.response.results.sco['url-path'],
+    log: createMeeting.log
   }
 }

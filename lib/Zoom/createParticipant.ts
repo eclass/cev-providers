@@ -21,23 +21,30 @@ const findOrCreate = async (
     }
   })
 
-  if (newParticipant.id) {
+  if (newParticipant.response.id) {
     const {
       id,
       first_name: firstName,
       last_name: lastName,
       email,
       type
-    } = newParticipant
+    } = newParticipant.response
     return {
       id,
       firstName,
       lastName,
       email,
       type,
-      groupId: undefined
+      groupId: undefined,
+      log: newParticipant.log
     }
   }
+
+  const oldParticipant = await fetchEndpoint({
+    token,
+    method: 'get',
+    pathUrl: `/users/${participant.email}`
+  })
 
   const {
     id,
@@ -46,11 +53,7 @@ const findOrCreate = async (
     email,
     type,
     group_ids: [groupId]
-  } = await fetchEndpoint({
-    token,
-    method: 'get',
-    pathUrl: `/users/${participant.email}`
-  })
+  } = oldParticipant.response
 
   return {
     id,
@@ -58,7 +61,8 @@ const findOrCreate = async (
     lastName,
     email,
     type,
-    groupId
+    groupId,
+    log: oldParticipant.log
   }
 }
 

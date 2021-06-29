@@ -6,7 +6,7 @@ export const participantToMeeting = async (
 ): Promise<boolean> => {
   const { meeting, participant, token } = props
 
-  const added = await fetchEndpoint({
+  const { response } = await fetchEndpoint({
     token,
     method: 'post',
     pathUrl: `/meetings/${meeting.id}/registrants`,
@@ -16,5 +16,5 @@ export const participantToMeeting = async (
     }
   })
 
-  return !!added
+  return !!response
 }

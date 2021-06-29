@@ -8,6 +8,30 @@ export * from './Zoom/'
 export * from './BaseProvider'
 
 /**
+ * Instancia de log de una petición realizada.
+ */
+type Log = {
+  /**
+   * Cabeceras de la petición.
+   */
+  headers?: {
+    [key: string]: string | number | boolean | Date
+  }
+  /**
+   * Código de estado de la petición.
+   */
+  status?: number
+  /**
+   * Texto de estado de la petición
+   */
+  statusText?: string
+  /**
+   * Url donde se realizó la petición
+   */
+  url?: string
+}
+
+/**
  * Instancia de Meeting del Proveedor CEV.
  */
 export type Meeting = {
@@ -108,6 +132,10 @@ export type Meeting = {
    * @requires Zoom
    */
   startUrl?: string
+  /**
+   * Información de la petición para registrar en logs.
+   */
+  log?: Log
 }
 
 /**
@@ -167,6 +195,10 @@ export type Participant = {
    * Identificador del grupo al que puede pertenecer un participante.
    */
   groupId?: string
+  /**
+   * Información de la petición para registrar en logs
+   */
+  log?: Log
 }
 
 /**
@@ -257,4 +289,15 @@ export type GoMeetingProps = {
    * @requires Zoom
    */
   email?: string
+}
+
+export type FetchEndpoint = {
+  /**
+   * JSON con body de la petición.
+   */
+  response?: any
+  /**
+   * Información de la petición para registrar en logs.
+   */
+  log: Log
 }

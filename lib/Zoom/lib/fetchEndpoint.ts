@@ -1,12 +1,13 @@
 import { URL } from 'url'
 import { RequestTokenProps } from '../../types'
+import { FetchEndpoint } from '../../'
 import fetch = require('node-fetch')
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const fetchEndpoint = async (
   { token, method, pathUrl, queryUrl, body }: RequestTokenProps,
   debug = false
-): Promise<any> => {
+): Promise<FetchEndpoint> => {
   const baseUrl = 'https://api.zoom.us/'
   const endPointUrl = new URL(`/v2${pathUrl}`, baseUrl)
   if (queryUrl) {
@@ -30,5 +31,13 @@ export const fetchEndpoint = async (
   if (!response) {
     throw new Error(`Network Error on fetch ${endPointUrl}`)
   }
-  return responseText
+  return {
+    response: responseText,
+    log: {
+      headers: response.headers,
+      status: response.status,
+      statusText: response.statusText,
+      url: response.url
+    }
+  }
 }

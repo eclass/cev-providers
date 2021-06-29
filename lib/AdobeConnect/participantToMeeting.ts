@@ -5,7 +5,7 @@ export const participantToMeeting = async (
   props: ParticipantToMeetingProps
 ): Promise<boolean> => {
   const { scoId, principalId, permissionId, token, url } = props
-  const added = await fetchEndpoint(`${url}/api/xml`, {
+  const { response } = await fetchEndpoint(`${url}/api/xml`, {
     session: token,
     action: 'permissions-update',
     'acl-id': scoId,
@@ -13,5 +13,5 @@ export const participantToMeeting = async (
     'permission-id': permissionId
   })
 
-  return added.results.status['@_code'] === 'ok'
+  return response.results.status['@_code'] === 'ok'
 }

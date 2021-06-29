@@ -10,7 +10,7 @@ import { GoMeetingProps } from '..'
 export const goMeeting = async (props: GoMeetingProps): Promise<string> => {
   const { token, meetingId, email } = props
 
-  const searchRegistrants = await fetchEndpoint({
+  const { response } = await fetchEndpoint({
     token,
     method: 'get',
     pathUrl: `/meetings/${meetingId}/registrants`
@@ -19,8 +19,6 @@ export const goMeeting = async (props: GoMeetingProps): Promise<string> => {
   /**
    * @todo Pagination.
    */
-  const registrant = searchRegistrants.registrants.find(
-    record => record.email === email
-  )
+  const registrant = response.registrants.find(record => record.email === email)
   return registrant.join_url
 }
