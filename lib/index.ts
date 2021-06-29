@@ -10,13 +10,11 @@ export * from './BaseProvider'
 /**
  * Instancia de log de una petición realizada.
  */
-type Log = {
+export type Log = {
   /**
    * Cabeceras de la petición.
    */
-  headers?: {
-    [key: string]: string | number | boolean | Date
-  }
+  headers?: Map<string, string | number | boolean | Date>
   /**
    * Código de estado de la petición.
    */
