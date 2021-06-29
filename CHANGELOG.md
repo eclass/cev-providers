@@ -1,3 +1,15 @@
+# [2.2.0](https://github.com/eclass/cev-providers/compare/v2.1.4...v2.2.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency fast-xml-parser to v3.19.0 ([bb23977](https://github.com/eclass/cev-providers/commit/bb239770dd7d2ab85bc8f50f82c7cd4ead6d10fa))
+
+
+### Features
+
+* **lib:** add logs params to return on fetchEndpoint ([#261](https://github.com/eclass/cev-providers/issues/261)) ([65bda59](https://github.com/eclass/cev-providers/commit/65bda5964a0dfa28c9b0102a53c58f41567a0fe7))
+
 ## [2.1.4](https://github.com/eclass/cev-providers/compare/v2.1.3...v2.1.4) (2021-02-05)
 
 
