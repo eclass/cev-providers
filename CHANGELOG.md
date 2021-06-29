@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/eclass/cev-providers/compare/v2.2.0...v2.2.1) (2021-06-29)
+
+
+### Bug Fixes
+
+* **log:** fix headers definition ([#262](https://github.com/eclass/cev-providers/issues/262)) ([78cc5e0](https://github.com/eclass/cev-providers/commit/78cc5e0daa5b37d7606942e8c11cfb74c3e52eac))
+
 # [2.2.0](https://github.com/eclass/cev-providers/compare/v2.1.4...v2.2.0) (2021-06-29)
 
 
