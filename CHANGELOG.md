@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/eclass/cev-providers/compare/v2.2.1...v2.3.0) (2021-07-12)
+
+
+### Features
+
+* **lib:** add timeout abort controller on fetch ([#276](https://github.com/eclass/cev-providers/issues/276)) ([377c590](https://github.com/eclass/cev-providers/commit/377c590425c88a8608a441b586d891250dd22cac))
+
 ## [2.2.1](https://github.com/eclass/cev-providers/compare/v2.2.0...v2.2.1) (2021-06-29)
 
 
