@@ -4,6 +4,7 @@ import { FetchEndpoint } from '../../'
 
 import parser = require('fast-xml-parser')
 import fetch = require('node-fetch')
+import AbortController from 'abort-controller'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const fetchEndpoint = async (
@@ -12,11 +13,16 @@ export const fetchEndpoint = async (
   params: any,
   debug = false
 ): Promise<FetchEndpoint> => {
+  const timeout = 8000
   const endPointUrl = new URL(url)
   Object.keys(params).forEach(key =>
     endPointUrl.searchParams.append(key, params[`${key}`])
   )
-  const response = await fetch(endPointUrl)
+  const controller = new AbortController()
+  const id = setTimeout(() => controller.abort(), timeout)
+  const response = await fetch(endPointUrl, {
+    signal: controller.signal
+  })
   if (!response || !response.ok) {
     throw new Error(`Network Error on fetch ${url}`)
   }
@@ -39,6 +45,8 @@ export const fetchEndpoint = async (
   if (!parsed.results) {
     throw new Error(`Fetch error on ${url} when tried action ${params?.action}`)
   }
+
+  clearTimeout(id)
   return {
     response: parsed,
     log: {

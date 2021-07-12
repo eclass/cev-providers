@@ -24,19 +24,22 @@ export const login = async ({
   Object.keys(params).forEach(key =>
     loginUrl.searchParams.append(key, params[`${key}`])
   )
-  const response = await fetch(loginUrl)
+  try {
+    const response = await fetch(loginUrl)
+    if (!response.ok) {
+      throw new Error('Response Error')
+    }
 
-  if (!response.ok) {
-    throw new Error('Response Error')
+    const cookies = response.headers.get('set-cookie')
+    if (cookies === '' || !cookies.includes('BREEZESESSION')) {
+      throw new Error('Cookie BREEZESESSION not found in header')
+    }
+    const [[, breezeSession]] = cookies
+      .split(';')
+      .map(cookie => cookie.split('='))
+
+    return breezeSession
+  } catch (err) {
+    throw new Error(err)
   }
-
-  const cookies = response.headers.get('set-cookie')
-  if (cookies === '' || !cookies.includes('BREEZESESSION')) {
-    throw new Error('Cookie BREEZESESSION not found in header')
-  }
-
-  const [[, breezeSession]] = cookies
-    .split(';')
-    .map(cookie => cookie.split('='))
-  return breezeSession
 }
