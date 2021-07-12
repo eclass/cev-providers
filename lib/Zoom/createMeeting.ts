@@ -33,17 +33,20 @@ export const createMeeting = async (meeting: Meeting): Promise<Meeting> => {
     schedule_for: scheduleFor,
     settings
   }
+  try {
+    const { response, log } = await fetchEndpoint({
+      token,
+      method: 'post',
+      pathUrl: `/users/${userId}/meetings`,
+      body: baseMeeting
+    })
 
-  const { response, log } = await fetchEndpoint({
-    token,
-    method: 'post',
-    pathUrl: `/users/${userId}/meetings`,
-    body: baseMeeting
-  })
-
-  return {
-    ...response,
-    startUrl: response.start_url,
-    log
+    return {
+      ...response,
+      startUrl: response.start_url,
+      log
+    }
+  } catch (err) {
+    throw new Error(err)
   }
 }

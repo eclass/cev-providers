@@ -21,67 +21,81 @@ export const createMeeting = async ({
   /**
    * Obtener `sco_id`.
    */
-  const getShortcutId = await fetchEndpoint(`${url}/api/xml`, {
-    session: token,
-    action: 'sco-shortcuts'
-  })
-  if (getShortcutId.response.results.status['@_code'] === 'ok') {
-    scoId = getShortcutId.response.results.shortcuts.sco.find(
-      short => short['@_type'] === 'user-meetings'
-    )['@_sco-id']
+  try {
+    const getShortcutId = await fetchEndpoint(`${url}/api/xml`, {
+      session: token,
+      action: 'sco-shortcuts'
+    })
+
+    if (getShortcutId.response.results.status['@_code'] === 'ok') {
+      scoId = getShortcutId.response.results.shortcuts.sco.find(
+        short => short['@_type'] === 'user-meetings'
+      )['@_sco-id']
+    }
+  } catch (err) {
+    throw new Error(err)
   }
 
   /**
    * Validar si meeting ya existe.
    */
-  const checkMeeting = await fetchEndpoint(`${url}/api/xml`, {
-    session: token,
-    action: 'sco-contents',
-    'sco-id': scoId,
-    'filter-type': 'meeting',
-    'filter-name': name
-  })
-  if (
-    checkMeeting.response.results.status['@_code'] === 'ok' &&
-    checkMeeting.response.results.scos.sco
-  ) {
-    return {
-      name,
-      dateInit,
-      scoId: checkMeeting.response.results.scos.sco['@_sco-id'],
-      url: url + checkMeeting.response.results.scos.sco['url-path'],
-      log: checkMeeting.log
+  try {
+    const checkMeeting = await fetchEndpoint(`${url}/api/xml`, {
+      session: token,
+      action: 'sco-contents',
+      'sco-id': scoId,
+      'filter-type': 'meeting',
+      'filter-name': name
+    })
+    if (
+      checkMeeting.response.results.status['@_code'] === 'ok' &&
+      checkMeeting.response.results.scos.sco
+    ) {
+      return {
+        name,
+        dateInit,
+        scoId: checkMeeting.response.results.scos.sco['@_sco-id'],
+        url: url + checkMeeting.response.results.scos.sco['url-path'],
+        log: checkMeeting.log
+      }
     }
+  } catch (err) {
+    throw new Error(err)
   }
 
   /**
    * Crear meeting
    */
-  const createMeeting = await fetchEndpoint(`${url}/api/xml`, {
-    session: token,
-    action: 'sco-update',
-    type: 'meeting',
-    name,
-    'url-path': name.toLowerCase().replace(/\s/g, '-'),
-    'folder-id': scoId,
-    'date-begin': dateInit,
-    'date-end': dateEnd
-  })
+  try {
+    const createMeeting = await fetchEndpoint(`${url}/api/xml`, {
+      session: token,
+      action: 'sco-update',
+      type: 'meeting',
+      name,
+      'url-path': name.toLowerCase().replace(/\s/g, '-'),
+      'folder-id': scoId,
+      'date-begin': dateInit,
+      'date-end': dateEnd
+    })
 
-  if (
-    createMeeting.response.results.status['@_code'] !== 'ok' ||
-    !createMeeting.response.results.sco
-  ) {
-    throw new Error(
-      'Bad response createMeeting: ' + createMeeting.response.results.statusText
-    )
-  }
+    if (
+      createMeeting.response.results.status['@_code'] !== 'ok' ||
+      !createMeeting.response.results.sco
+    ) {
+      throw new Error(
+        'Bad response createMeeting: ' +
+          createMeeting.response.results.statusText
+      )
+    }
 
-  return {
-    name,
-    dateInit,
-    scoId: createMeeting.response.results.sco['@_sco-id'],
-    url: url + createMeeting.response.results.sco['url-path'],
-    log: createMeeting.log
+    return {
+      name,
+      dateInit,
+      scoId: createMeeting.response.results.sco['@_sco-id'],
+      url: url + createMeeting.response.results.sco['url-path'],
+      log: createMeeting.log
+    }
+  } catch (err) {
+    throw new Error(err)
   }
 }
