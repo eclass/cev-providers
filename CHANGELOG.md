@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/eclass/cev-providers/compare/v2.3.0...v2.4.0) (2021-09-15)
+
+
+### Features
+
+* **log:** añadimos logs a la peticion goMeeting ([#293](https://github.com/eclass/cev-providers/issues/293)) ([929531a](https://github.com/eclass/cev-providers/commit/929531ac1db6b07162e158d055136a9b9f6df4be))
+
 # [2.3.0](https://github.com/eclass/cev-providers/compare/v2.2.1...v2.3.0) (2021-07-12)
 
 
