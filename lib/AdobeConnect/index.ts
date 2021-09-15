@@ -4,7 +4,8 @@ import {
   Participant,
   ProviderConstructor,
   ParticipantToMeetingProps,
-  GoMeetingProps
+  GoMeetingProps,
+  GoMeetingPayload
 } from '../'
 import { BaseProvider } from '../BaseProvider'
 
@@ -126,7 +127,7 @@ export class AdobeConnect extends BaseProvider {
     })
   }
 
-  public async goMeeting (props: GoMeetingProps): Promise<string> {
+  public async goMeeting (props: GoMeetingProps): Promise<GoMeetingPayload> {
     const {
       scoUrl,
       loginProps: { username, password }

@@ -3,7 +3,8 @@ import {
   Participant,
   Meeting,
   ParticipantToMeetingProps,
-  GoMeetingProps
+  GoMeetingProps,
+  GoMeetingPayload
 } from '.'
 
 /**
@@ -44,7 +45,7 @@ export abstract class BaseProvider {
    * @param {GoMeetingProps} props - Parámetros de goMeeting.
    */
   // abstract goMeeting (url: string, props: LoginProps): Promise<string>
-  abstract goMeeting (props: GoMeetingProps): Promise<string>
+  abstract goMeeting (props: GoMeetingProps): Promise<GoMeetingPayload>
 
   /**
    * Devuelve la url con la sesión para conectar directamente al proveedor.
