@@ -289,6 +289,26 @@ export type GoMeetingProps = {
   email?: string
 }
 
+/**
+ * Payload para goMeeting en Proveedor CEV.
+ */
+export type GoMeetingPayload = {
+  /**
+   * URL de ingreso a la meeting
+   */
+  url: string
+
+  /**
+   * Información de los participantes de la reunión.
+   */
+  registrants?: any
+
+  /**
+   * Información de la petición para registrar en logs.
+   */
+  log?: Log
+}
+
 export type FetchEndpoint = {
   /**
    * JSON con body de la petición.

@@ -1,4 +1,5 @@
 import { URL } from 'url'
+import { GoMeetingPayload } from '..'
 
 /**
  * Genera url formateada con session para ingresar a llamada
@@ -6,8 +7,8 @@ import { URL } from 'url'
  * @example
  *  const goMeeting = goMeeting(url, token)
  */
-export const goMeeting = (url: string, token: string): string => {
+export const goMeeting = (url: string, token: string): GoMeetingPayload => {
   const returnUrl = new URL(url)
   returnUrl.searchParams.append('session', token)
-  return returnUrl.href
+  return { url: returnUrl.href }
 }

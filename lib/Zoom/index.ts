@@ -4,7 +4,8 @@ import {
   Participant,
   ProviderConstructor,
   ParticipantToMeetingProps,
-  GoMeetingProps
+  GoMeetingProps,
+  GoMeetingPayload
 } from '../'
 import { BaseProvider } from '../BaseProvider'
 
@@ -114,7 +115,7 @@ export class Zoom extends BaseProvider {
     })
   }
 
-  public async goMeeting (props: GoMeetingProps): Promise<string> {
+  public async goMeeting (props: GoMeetingProps): Promise<GoMeetingPayload> {
     /**
      * Si no está logueado, loguea a la aplicación de Zoom.
      */
