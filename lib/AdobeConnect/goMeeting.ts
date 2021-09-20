@@ -10,5 +10,9 @@ import { GoMeetingPayload } from '..'
 export const goMeeting = (url: string, token: string): GoMeetingPayload => {
   const returnUrl = new URL(url)
   returnUrl.searchParams.append('session', token)
-  return { url: returnUrl.href }
+  return {
+    url: returnUrl.href,
+    log: { status: 200, statusText: '', url: '' },
+    registrants: {}
+  }
 }
