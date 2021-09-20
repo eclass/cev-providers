@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/eclass/cev-providers/compare/v2.4.0...v2.4.1) (2021-09-20)
+
+
+### Bug Fixes
+
+* **adobeconnect:** fix return on goMeeting ([0a0e040](https://github.com/eclass/cev-providers/commit/0a0e0402ba881efd90f9c109ebed3eae723fd8e9))
+
 # [2.4.0](https://github.com/eclass/cev-providers/compare/v2.3.0...v2.4.0) (2021-09-15)
 
 
