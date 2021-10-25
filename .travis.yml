@@ -4,7 +4,7 @@ cache:
     - ~/.npm
 node_js:
   - '12.22.6'
-  - 'v14.4.0'
+  - '14.18.1'
 notifications:
   email: false
 stages:
