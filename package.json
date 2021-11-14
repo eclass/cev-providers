@@ -38,7 +38,7 @@
     "abort-controller": "3.0.0",
     "fast-xml-parser": "3.19.0",
     "jsonwebtoken": "8.5.1",
-    "node-fetch": "2.6.1"
+    "node-fetch": "2.6.6"
   },
   "devDependencies": {
     "@commitlint/cli": "9.1.2",
