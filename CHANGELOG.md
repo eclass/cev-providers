@@ -1,3 +1,12 @@
+## [2.4.2](https://github.com/eclass/cev-providers/compare/v2.4.1...v2.4.2) (2021-12-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency fast-xml-parser to v3.21.1 ([4f17a15](https://github.com/eclass/cev-providers/commit/4f17a15de3bfffb05340630d2446569a27131765))
+* **deps:** update dependency node-fetch to v2.6.6 ([e425a77](https://github.com/eclass/cev-providers/commit/e425a779c8764894d3223e306462b112a12dc26d))
+* **participant:** add last_name in registrant zoom ([242f856](https://github.com/eclass/cev-providers/commit/242f8567ac5be40748f46810fdc2b9b7db854b1e))
+
 ## [2.4.1](https://github.com/eclass/cev-providers/compare/v2.4.0...v2.4.1) (2021-09-20)
 
 
