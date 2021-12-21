@@ -13,7 +13,8 @@ export const participantToMeeting = async (
       pathUrl: `/meetings/${meeting.id}/registrants`,
       body: {
         email: participant.email,
-        first_name: participant.firstName
+        first_name: participant.firstName,
+        last_name: participant.lastName
       }
     })
 
