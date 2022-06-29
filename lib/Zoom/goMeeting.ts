@@ -22,7 +22,7 @@ export const goMeeting = async (
     /**
      * @todo Pagination.
      */
-    const registrant = response.registrants.find(
+    const registrant = response.registrants?.find(
       record => record.email === email
     )
 

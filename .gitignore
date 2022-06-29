@@ -66,3 +66,4 @@ dist
 # Temporary Tests
 testZoom.ts
 .DS_Store
+.idea

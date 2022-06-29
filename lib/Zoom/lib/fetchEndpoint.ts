@@ -7,7 +7,7 @@ import AbortController from 'abort-controller'
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const fetchEndpoint = async (
   { token, method, pathUrl, queryUrl, body }: RequestTokenProps,
-  debug = false
+  debug = true
 ): Promise<FetchEndpoint> => {
   const timeout = 8000
   const baseUrl = 'https://api.zoom.us/'
@@ -28,7 +28,9 @@ export const fetchEndpoint = async (
     body: JSON.stringify(body),
     signal: controller.signal
   })
-  const responseText = await response.json()
+
+  const responseText = await response.text()
+
   if (debug) {
     // eslint-disable-next-line no-console
     console.log({ responseText })

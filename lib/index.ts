@@ -137,6 +137,27 @@ export type Meeting = {
 }
 
 /**
+ * Parametros para actualizar la zona horaria del meeting en zoom
+ */
+export type UpdateMeetingTimezone = {
+  /**
+   * Id del Meeting
+   */
+  meetingId: number
+  /**
+   * Zona horaria del alumno
+   */
+  timezone: string
+  /**
+   * Token del Proveedor CEV.
+   * @requires AdobeConnect
+   * @requires Zoom
+   * @emits
+   */
+  token: string
+}
+
+/**
  * Instancia de Participante a la reunión del Proveedor CEV.
  */
 export type Participant = {
@@ -207,6 +228,7 @@ export type ProviderConstructor = {
   username?: string
   password?: string
   email?: string
+  timeZone: string
 }
 
 /**
