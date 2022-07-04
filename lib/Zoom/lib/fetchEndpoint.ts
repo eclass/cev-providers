@@ -6,8 +6,15 @@ import AbortController from 'abort-controller'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const fetchEndpoint = async (
-  { token, method, pathUrl, queryUrl, body }: RequestTokenProps,
-  debug = true
+  {
+    token,
+    method,
+    pathUrl,
+    queryUrl,
+    body,
+    parseJson = true
+  }: RequestTokenProps,
+  debug = false
 ): Promise<FetchEndpoint> => {
   const timeout = 8000
   const baseUrl = 'https://api.zoom.us/'
@@ -29,18 +36,19 @@ export const fetchEndpoint = async (
     signal: controller.signal
   })
 
-  const responseText = await response.text()
-
-  if (debug) {
-    // eslint-disable-next-line no-console
-    console.log({ responseText })
-  }
   if (!response) {
     throw new Error(`Network Error on fetch ${endPointUrl}`)
   }
+
+  const responseJson = parseJson ? await response.json() : await response.text()
+  if (debug) {
+    // eslint-disable-next-line no-console
+    console.log({ responseText: responseJson })
+  }
+
   clearTimeout(id)
   return {
-    response: responseText,
+    response: responseJson,
     log: {
       headers: response.headers,
       status: response.status,

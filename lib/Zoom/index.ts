@@ -130,15 +130,18 @@ export class Zoom extends BaseProvider {
      * Loguea a la aplicación de Zoom con el usuario ingresado.
      */
 
-    await updateMeetingTimezone({
-      meetingId: props.meetingId,
-      token: this.token,
-      timezone: this._timeZone
-    })
+    // await updateMeetingTimezone({
+    //   meetingId: props.meetingId,
+    //   token: this.token,
+    //   timezone: this._timeZone
+    // })
+
+    // console.log("here after update");
 
     return await goMeeting({
       ...props,
-      token: this.token
+      token: this.token,
+      timezone: this._timeZone
     })
   }
 

@@ -309,6 +309,10 @@ export type GoMeetingProps = {
    * @requires Zoom
    */
   email?: string
+  /**
+   * Timezone
+   */
+  timezone?: string
 }
 
 /**

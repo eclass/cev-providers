@@ -8,24 +8,20 @@ import { fetchEndpoint } from './lib/fetchEndpoint'
  */
 export const updateMeetingTimezone = async (
   meeting: UpdateMeetingTimezone
-): Promise<Meeting> => {
+): Promise<void> => {
   const { meetingId, timezone, token } = meeting
 
   try {
-    const { response, log } = await fetchEndpoint({
+    await fetchEndpoint({
       token,
       method: 'patch',
       pathUrl: `/meeting/${meetingId}`,
       body: {
-        timezone: timezone
-      }
+        timezone: timezone,
+        start_time: new Date('2022-07-01 12:00')
+      },
+      parseJson: false
     })
-
-    return {
-      ...response,
-      startUrl: '',
-      log
-    }
   } catch (error) {
     throw new Error(error)
   }
