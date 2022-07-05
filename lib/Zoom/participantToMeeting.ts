@@ -13,12 +13,11 @@ export const participantToMeeting = async (
       pathUrl: `/meetings/${meeting.id}/registrants`,
       body: {
         email: participant.email,
-        first_name: participant.firstName,
-        last_name: participant.lastName
+        first_name: participant.firstName || '.'
       }
     })
 
-    return !!response
+    return !!response && !!response.id
   } catch (err) {
     throw new Error(err)
   }
