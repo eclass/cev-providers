@@ -1,3 +1,11 @@
+## [2.4.3](https://github.com/eclass/cev-providers/compare/v2.4.2...v2.4.3) (2022-07-05)
+
+
+### Bug Fixes
+
+* **docs:** readme Zoom.us ([3a40125](https://github.com/eclass/cev-providers/commit/3a401259437a89d1207da09e268afcfc84c24c3d))
+* **zoom:** agregamos logica de timeZone del alumno ([#312](https://github.com/eclass/cev-providers/issues/312)) ([fea8b96](https://github.com/eclass/cev-providers/commit/fea8b9624a2262a69676f99d953dfc07d6e88669))
+
 ## [2.4.2](https://github.com/eclass/cev-providers/compare/v2.4.1...v2.4.2) (2021-12-21)
 
 
