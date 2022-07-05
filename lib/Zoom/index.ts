@@ -21,6 +21,7 @@ import { goMeeting } from './goMeeting'
 import { goMeetingTeacher } from './goMeetingTeacher'
 
 import { participantToMeeting } from './participantToMeeting'
+import { updateMeetingTimezone } from './updateMeetingTimezone'
 
 export class Zoom extends BaseProvider {
   private _username: string
@@ -29,17 +30,19 @@ export class Zoom extends BaseProvider {
   private _email: string
   private _participants: Array<Participant> = []
   private _userId: string
+  private _timeZone: string
 
   private _logged = false
 
   constructor (props: ProviderConstructor) {
     super()
 
-    const { url, username, password, email } = props
+    const { url, username, password, email, timeZone } = props
     this.url = url
     this._username = username
     this._password = password
     this._email = email
+    this._timeZone = timeZone
   }
 
   public async login (props: LoginProps): Promise<string> {
@@ -126,9 +129,19 @@ export class Zoom extends BaseProvider {
     /**
      * Loguea a la aplicación de Zoom con el usuario ingresado.
      */
+
+    // await updateMeetingTimezone({
+    //   meetingId: props.meetingId,
+    //   token: this.token,
+    //   timezone: this._timeZone
+    // })
+
+    // console.log("here after update");
+
     return await goMeeting({
       ...props,
-      token: this.token
+      token: this.token,
+      timezone: this._timeZone
     })
   }
 

@@ -47,4 +47,6 @@ export type RequestTokenProps = {
    * Cuerpo del request.
    */
   body?: unknown
+
+  parseJson?: boolean
 }
