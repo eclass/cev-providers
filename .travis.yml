@@ -3,7 +3,7 @@ cache:
   directories:
     - ~/.npm
 node_js:
-  - '12.22.7'
+  - '12.22.12'
   - '14.18.1'
 notifications:
   email: false
