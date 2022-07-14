@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable camelcase */
 import { LoginProps } from './types'
 
 // Clases
@@ -344,4 +346,47 @@ export type FetchEndpoint = {
    * Información de la petición para registrar en logs.
    */
   log: Log
+}
+
+/**
+ * Interfaces para editParticipant
+ */
+export interface CustomAttribute {
+  key: string
+  name: string
+  value: string
+}
+
+export interface PhoneNumber {
+  code: string
+  country: string
+  label: string
+  number: string
+}
+
+export interface EditParticipantAttributes {
+  userId: string | number
+  cms_user_id?: string
+  company?: string
+  custom_attributes?: CustomAttribute[]
+  dept?: string
+  first_name?: string
+  group_id?: string
+  host_key?: string
+  job_title?: string
+  language?: string
+  last_name?: string
+  location?: string
+  manager?: string
+  phone_country?: string
+  phone_number?: string
+  phone_numbers?: PhoneNumber[]
+  pmi?: number
+  pronouns?: string
+  pronouns_option?: number
+  timezone?: string
+  type?: number
+  use_pmi?: boolean
+  vanity_name?: string
+  zoom_one_type?: number
 }

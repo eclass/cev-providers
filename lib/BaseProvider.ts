@@ -4,7 +4,9 @@ import {
   Meeting,
   ParticipantToMeetingProps,
   GoMeetingProps,
-  GoMeetingPayload
+  GoMeetingPayload,
+  FetchEndpoint,
+  EditParticipantAttributes
 } from '.'
 
 /**
@@ -33,6 +35,13 @@ export abstract class BaseProvider {
    * @param {Participant} participant - Instancia de participante a añadir.
    */
   abstract createParticipant (participant: Participant): Promise<Participant>
+
+  /**
+   * Método que permite editar un participante.
+   */
+  abstract editParticipant (
+    participant: EditParticipantAttributes
+  ): Promise<FetchEndpoint>
 
   /**
    * Método que permite crear una reunión.
