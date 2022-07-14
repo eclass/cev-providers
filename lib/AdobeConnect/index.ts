@@ -5,7 +5,9 @@ import {
   ProviderConstructor,
   ParticipantToMeetingProps,
   GoMeetingProps,
-  GoMeetingPayload
+  GoMeetingPayload,
+  EditParticipantAttributes,
+  FetchEndpoint
 } from '../'
 import { BaseProvider } from '../BaseProvider'
 
@@ -72,6 +74,12 @@ export class AdobeConnect extends BaseProvider {
 
     this._meeting = Meeting
     return Meeting
+  }
+
+  public editParticipant (
+    participant: EditParticipantAttributes
+  ): Promise<FetchEndpoint> {
+    throw new Error('Method not implemented.')
   }
 
   public async createParticipant (
