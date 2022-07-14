@@ -5,7 +5,9 @@ import {
   ProviderConstructor,
   ParticipantToMeetingProps,
   GoMeetingProps,
-  GoMeetingPayload
+  GoMeetingPayload,
+  FetchEndpoint,
+  EditParticipantAttributes
 } from '../'
 import { BaseProvider } from '../BaseProvider'
 
@@ -21,7 +23,7 @@ import { goMeeting } from './goMeeting'
 import { goMeetingTeacher } from './goMeetingTeacher'
 
 import { participantToMeeting } from './participantToMeeting'
-import { updateMeetingTimezone } from './updateMeetingTimezone'
+import editParticipant from './editParticipant'
 
 export class Zoom extends BaseProvider {
   private _username: string
@@ -100,6 +102,16 @@ export class Zoom extends BaseProvider {
 
     this._participants.push(Participant)
     return Participant
+  }
+
+  public async editParticipant (
+    participant: EditParticipantAttributes
+  ): Promise<FetchEndpoint> {
+    if (!this._logged) {
+      await this.login({ username: this._username, password: this._password })
+    }
+
+    return await editParticipant(participant, this.token)
   }
 
   public async participantToMeeting (
