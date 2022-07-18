@@ -1,3 +1,11 @@
+# [2.5.0](https://github.com/eclass/cev-providers/compare/v2.4.3...v2.5.0) (2022-07-18)
+
+
+### Features
+
+* **deep:** add updateTimezone logic ([f0ca94f](https://github.com/eclass/cev-providers/commit/f0ca94fd3e77cbc6afdceaa87d757ef4957b3238))
+* **deep:** agregamos la funcion editParticipant en Zoom ([758a9c1](https://github.com/eclass/cev-providers/commit/758a9c1a427db92e157615d6d314eae41392b005))
+
 ## [2.4.3](https://github.com/eclass/cev-providers/compare/v2.4.2...v2.4.3) (2022-07-05)
 
 
