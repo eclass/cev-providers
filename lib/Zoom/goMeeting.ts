@@ -1,6 +1,5 @@
 import { fetchEndpoint } from '../Zoom/lib/fetchEndpoint'
 import { GoMeetingProps, GoMeetingPayload } from '..'
-import { updateMeetingTimezone } from './updateMeetingTimezone'
 
 /**
  * Genera url formateada con session para ingresar a llamada
@@ -11,31 +10,14 @@ import { updateMeetingTimezone } from './updateMeetingTimezone'
 export const goMeeting = async (
   props: GoMeetingProps
 ): Promise<GoMeetingPayload> => {
-  const { token, meetingId, email, timezone } = props
+  const { token, meetingId, email } = props
 
   try {
-    const meetingWithRegistant = fetchEndpoint({
+    const { response, log } = await fetchEndpoint({
       token,
       method: 'get',
       pathUrl: `/meetings/${meetingId}/registrants`
     })
-    const meeting = fetchEndpoint({
-      token,
-      method: 'get',
-      pathUrl: `/meetings/${meetingId}`
-    })
-
-    const [{ response, log }, meetingResponse] = await Promise.all([
-      meetingWithRegistant,
-      meeting
-    ])
-
-    /*
-     * Si es que el alumno cambio la zona horaria se actualiza la de zoom
-     */
-    if (meetingResponse.response?.timezone !== timezone) {
-      await updateMeetingTimezone({ meetingId, timezone, token })
-    }
 
     /**
      * @todo Pagination.
