@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/eclass/cev-providers/compare/v2.5.0...v2.5.1) (2022-07-18)
+
+
+### Bug Fixes
+
+* **deep:** fixed goMeeting merge conflixt to v2.5.0 ([1317d75](https://github.com/eclass/cev-providers/commit/1317d7527da1423c76a287845a4e9409e3a66505))
+
 # [2.5.0](https://github.com/eclass/cev-providers/compare/v2.4.3...v2.5.0) (2022-07-18)
 
 
