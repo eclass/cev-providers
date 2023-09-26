@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/eclass/cev-providers/compare/v2.5.1...v2.6.0) (2023-09-26)
+
+
+### Features
+
+* **zoom:** login zoom updated, token required ([0e6e6c6](https://github.com/eclass/cev-providers/commit/0e6e6c627750f605e0c20a1bed303abe649cddd5))
+
 ## [2.5.1](https://github.com/eclass/cev-providers/compare/v2.5.0...v2.5.1) (2022-07-18)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@eclass/cev-providers",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "Integración Proveedores CEV",
   "main": "dist/index.js",
   "type": "commonjs",
