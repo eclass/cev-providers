@@ -229,8 +229,15 @@ export type ProviderConstructor = {
   url?: string
   username?: string
   password?: string
+  /** Email del usuario. */
   email?: string
+  /** Zona horaria del usuario. */
   timeZone: string
+  /**
+   * Si está seteado el token entonces ocupamos este en vez de hacer un jwt.sign().
+   * @important Requerido para el proveedor Zoom.
+   */
+  token: string
 }
 
 /**

@@ -1,4 +1,3 @@
-import { LoginProps } from '../types'
 import {
   Meeting,
   Participant,
@@ -12,9 +11,9 @@ import {
 import { BaseProvider } from '../BaseProvider'
 
 /**
- * Métodos del Proveedor Adobe Connect.
+ * Métodos del Proveedor Zoom.
  */
-import { login } from './login'
+import { zoomLogin } from './login'
 
 import { createParticipant } from './createParticipant'
 
@@ -39,17 +38,19 @@ export class Zoom extends BaseProvider {
   constructor (props: ProviderConstructor) {
     super()
 
-    const { url, username, password, email, timeZone } = props
+    const { url, username, password, email, timeZone, token } = props
     this.url = url
     this._username = username
     this._password = password
     this._email = email
     this._timeZone = timeZone
+    this.token = token
   }
 
-  public async login (props: LoginProps): Promise<string> {
-    const { username, password } = props
-    const loginInfo = await login({ username, password }, this.url, this._email)
+  // Token es obligatorio en Zoom desde el 8 de Septiembre.
+  // Se debe pasar un Token OAuth.
+  public async login (): Promise<string> {
+    const loginInfo = await zoomLogin(this.token, this._email)
     if (loginInfo) {
       this.token = loginInfo.token
       this._userId = loginInfo.userId
@@ -63,7 +64,7 @@ export class Zoom extends BaseProvider {
      * Si no está logueado, loguea a la aplicación de Zoom.
      */
     if (!this._logged) {
-      await this.login({ username: this._username, password: this._password })
+      await this.login()
     }
 
     const Meeting = await createMeeting({
@@ -87,7 +88,7 @@ export class Zoom extends BaseProvider {
      * Si no está logueado, loguea a la aplicación de Zoom.
      */
     if (!this._logged) {
-      await this.login({ username: this._username, password: this._password })
+      await this.login()
     }
 
     const Participant = await createParticipant(
@@ -108,7 +109,7 @@ export class Zoom extends BaseProvider {
     participant: EditParticipantAttributes
   ): Promise<FetchEndpoint> {
     if (!this._logged) {
-      await this.login({ username: this._username, password: this._password })
+      await this.login()
     }
 
     return await editParticipant(participant, this.token)
@@ -121,7 +122,7 @@ export class Zoom extends BaseProvider {
      * Si no está logueado, loguea a la aplicación de Zoom.
      */
     if (!this._logged) {
-      await this.login({ username: this._username, password: this._password })
+      await this.login()
     }
 
     return await participantToMeeting({
@@ -135,7 +136,7 @@ export class Zoom extends BaseProvider {
      * Si no está logueado, loguea a la aplicación de Zoom.
      */
     if (!this._logged) {
-      await this.login({ username: this._username, password: this._password })
+      await this.login()
     }
 
     /**
@@ -162,7 +163,7 @@ export class Zoom extends BaseProvider {
      * Si no está logueado, loguea a la aplicación de Zoom.
      */
     if (!this._logged) {
-      await this.login({ username: this._username, password: this._password })
+      await this.login()
     }
 
     /**
