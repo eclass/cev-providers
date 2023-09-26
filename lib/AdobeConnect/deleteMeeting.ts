@@ -1,2 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-export default function () {}
+/**
+ * @returns {void} No retorna nada.
+ */
+export default function () {
+  return null
+}

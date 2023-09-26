@@ -1,29 +1,18 @@
-import { LoginProps } from '../types'
 import { fetchEndpoint } from './lib/fetchEndpoint'
-
-import * as jwt from 'jsonwebtoken'
 
 type LoginEndpoint = {
   token: string
   userId?: string
 }
 /**
- * Login a Zoom
+ * Login a Zoom retorna el userId del usuario por su email.
  *
- * @example
- *  const login = login({username, password}, url, email)
+ * @example const login = await login(token, email)
  */
-export const login = async (
-  { username, password }: LoginProps,
-  url: string,
+export const zoomLogin = async (
+  token: string,
   email: string
 ): Promise<LoginEndpoint> => {
-  /** Generar Token */
-  const payload = {
-    iss: username,
-    exp: new Date().getTime() + 5000
-  }
-  const token = jwt.sign(payload, password)
   /** Obtener id de usuario para peticiones */
   try {
     const { response } = await fetchEndpoint({
