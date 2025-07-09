@@ -1,3 +1,12 @@
+## [2.6.1](https://github.com/eclass/cev-providers/compare/v2.6.0...v2.6.1) (2025-07-09)
+
+
+### Bug Fixes
+
+* **ci:** quitamos script de test ([caad86d](https://github.com/eclass/cev-providers/commit/caad86ded9d4eef5eb4a47df98e4d6c1dfad1c80))
+* **ci:** travis quitamos la version 12 de la versiones de node ([f6aeb8b](https://github.com/eclass/cev-providers/commit/f6aeb8b38e96fdbf1c7f9ba300ac42e7bb69ef69))
+* **zoom:** se corrige logica de validacion de email para zoom ([c37f37e](https://github.com/eclass/cev-providers/commit/c37f37e42aaf7566c479b006b39fd48f3ba7ad72))
+
 # [2.6.0](https://github.com/eclass/cev-providers/compare/v2.5.1...v2.6.0) (2023-09-26)
 
 
