@@ -35,7 +35,7 @@
   "homepage": "https://github.com/eclass/cev-providers#readme",
   "dependencies": {
     "abort-controller": "3.0.0",
-    "fast-xml-parser": "3.21.1",
+    "fast-xml-parser": "5.7.0",
     "jsonwebtoken": "8.5.1",
     "node-fetch": "2.6.7"
   },
